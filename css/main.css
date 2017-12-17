@@ -567,6 +567,7 @@ input.labels_add {
         border-top: 0;
         border-bottom: 0;
     }
+    body.open_drawer>.toolbar,
     .toolbar {
         width: 842px;
         margin: auto;
@@ -574,12 +575,14 @@ input.labels_add {
         right: auto;
         padding-left: 0;
     }
+    body.open_drawer>.drawer,
     .drawer {
         left: auto;
         right: auto;
         margin: auto;
         margin-left: -256px;
     }
+    body.open_drawer>.content,
     .content {
         margin-left: 0;
     }
