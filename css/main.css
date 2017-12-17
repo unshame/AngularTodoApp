@@ -54,7 +54,7 @@ input[type="text"]:focus {
 .toolbar>.status {
     float: right;
     margin-right: 16px;
-    padding: 23px 0 23px 0;
+    padding: 24px 0 23px 0;
     transition: margin 500ms;
 }
 
