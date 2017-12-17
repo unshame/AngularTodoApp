@@ -19,10 +19,18 @@ input[type="text"] {
     font-size: 16px;
     outline: none;
 }
+
 input[type="text"]:focus {
     border-bottom: 1px solid rgba(33, 150, 243, 0.87);;
 }
 
+input[type="text"]::-webkit-input-placeholder,
+input[type="text"]::-moz-placeholder,
+input[type="text"]:-ms-input-placeholder,
+input[type="text"]:-moz-placeholder,
+input[type="text"]:placeholder { 
+  color: rgba(0, 0, 0, 0.54);
+}
 
 /* Toolbar */
 .toolbar {
@@ -336,6 +344,10 @@ button.cancel:before {
     display: block;
 }
 
+.line.new .label_selector_wrapper.default .label_selector_overlay{
+    color: rgba(0, 0, 0, 0.54);
+}
+
 /* Drawer */
 .drawer {
     position: fixed;
@@ -453,6 +465,10 @@ body.open_drawer>.drawer {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.57);
 }
 
+.drawer_form {
+    position: relative;
+}
+
 .icon.radio:before {
     content: 'radio_button_unchecked';
 }
@@ -478,22 +494,48 @@ input.search_field {
     width: 100%;
     height: 52px;
     margin-bottom: 0;
-    padding-left: 16px;
+    padding-left: 72px;
+    padding-right: 16px;
+    position: relative;
+    z-index: 1;
 }
 
-.icon.search_clear {
+.icon.input {
     position: absolute;
-    height: 56px;
+    height: 48px;
     width: 40px;
+    padding-left: 16px;
+    top: 0;
+    left: 0;
+    z-index: 0;
+}
+
+.icon.input.active {
+    z-index: 2;
+}
+
+.icon.input:before {
+    top: 12px;
+    left: 16px;
+}
+
+.icon.input.active:before {
+    content: 'clear';
+}
+
+.icon.search_clear{
+    height: 56px;
     padding-right: 16px;
-    top: 8px;
-    right: 0;
+    top: 4px;
 }
 
 .icon.search_clear:before {
-    content: 'clear';
+    content: 'search';
     top: 17px;
-    right: 16px;
+}
+
+.icon.label_clear:before {
+    content: 'add';
 }
 
 .control {
@@ -511,7 +553,7 @@ input.search_field {
 
 input.labels_add {
     margin: 0;
-    padding-left: 16px;
+    padding-left: 72px;
     width: 100%;
 }
 

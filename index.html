@@ -24,7 +24,7 @@
 	<main class="content open_drawer">
 			<form class="line new">	
 				<button class="checkbox icon big"></button>
-				<label class="label_selector_wrapper">
+				<label class="label_selector_wrapper default">
 					<span class="label_selector_overlay">Pick a label</span>
 					<select class="label_selector">
 						<option>Pick a label</option>
@@ -33,7 +33,7 @@
 					<div class="label icon gray"></div>
 				</label>				
 				<div class="add_wrapper">
-					<input type="text" class="add" placeholder="Type in what needs to be done">
+					<input type="text" class="add" placeholder="Type in your task and press enter">
 				</div>
 			</form>
 			<article class="line done">		
@@ -399,9 +399,9 @@
 	</main>
 	<aside class="drawer" id="drawer">
 		<section class="drawer_section search">
-			<form>
-				<input type="text" class="search_field" placeholder="Search through your tasks">
-				<button class="search_clear icon"></button>
+			<form class="drawer_form">
+				<input type="text" class="search_field" placeholder="Search your tasks">
+				<button class="search_clear input icon"></button>
 			</form>
 		</section>
 		<section class="drawer_section filter">
@@ -431,13 +431,14 @@
 				<button class="label_delete icon"></button>
 				<button class="drawer_line icon eye green">Why</button>
 			</div>
-			<form>
+			<form class="drawer_form">
 				<input type="text" class="labels_add" placeholder="Add a label">
+				<button class="label_clear input icon"></button>
 			</form>
 		</section>
 		<section class="drawer_section control">
 			<button class="drawer_button">Remove complete</button>
-			<button class="drawer_button">Reset all filters</button>
+			<button class="drawer_button">Show all tasks</button>
 			<header class="drawer_header">
 				Showing 18 out of 20 tasks 
 			</header>
