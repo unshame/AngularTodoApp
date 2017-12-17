@@ -415,11 +415,11 @@ body.open_drawer>.drawer {
     clear: both;
 }
 
-.drawer_line_wrapper:hover .label_remove {
+.drawer_line_wrapper:hover .label_delete {
     display: block;
 }
 
-.icon.label_remove {
+.icon.label_delete {
     position: absolute;
     display: none;
     right: 0;
@@ -428,9 +428,9 @@ body.open_drawer>.drawer {
     z-index: 2;
 }
 
-.icon.label_remove:before {
-    content: 'clear';
-    top: 14px;
+.icon.label_delete:before {
+    content: 'delete';
+    top: 12px;
 }
 
 .drawer_button{
