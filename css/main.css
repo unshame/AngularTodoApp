@@ -122,6 +122,7 @@ button.open_drawer:before {
     display: block;
 }
 
+.line.edit button.cancel.icon,
 .line.edit .editor {
     display: block;
 }
@@ -152,7 +153,7 @@ button.checkbox.icon:before {
     content: 'check_box';
 }
 
-.label.icon, button.edit.icon, button.delete.icon  {
+.label.icon, button.edit.icon, button.delete.icon, button.cancel.icon  {
     position: relative;
     float: right;
     padding: 12px 8px;
@@ -162,16 +163,22 @@ button.checkbox.icon:before {
     display: block;
 }
 
-.label.icon:before, button.edit.icon:before, button.delete.icon:before {
+.label.icon:before, button.edit.icon:before, button.delete.icon:before,
+button.cancel.icon:before {
     top: 12px;
     left: 8px;
 }
 
-.label.icon {
+.label.icon, button.cancel.icon {
     margin-right: 0;
     opacity: 1;
     z-index: 1;
     padding-right: 16px;
+}
+
+button.cancel.icon {
+    display: none;
+    opacity: 1;
 }
 
 .label:before {
@@ -184,6 +191,10 @@ button.edit:before {
 
 button.delete:before {
     content:'delete';
+}
+
+button.cancel:before {
+    content:'undo';
 }
 
 .text, .editor {
