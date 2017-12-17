@@ -1,22 +1,29 @@
 html {
-	min-width: 326px;
-	height: 100%;
+    min-width: 326px;
+    height: 100%;
 }
+
 body {
-	font-family: 'Roboto', sans-serif;
-	background: #FAFAFA;
-	position:relative;
+    position:relative;
+
+    padding-top: 72px;
+
 	min-height: 100%;
+
 	overflow-x: hidden;
-	padding-top: 72px;
+
+    background: #fafafa;
+    font-family: 'Roboto', sans-serif;
 	font-size: 16px;
 }
 
 input[type="text"] {
-	height: 48px;
 	padding: 8px 0;
 	margin: 8px 0;
+
+    height: 48px;
 	border-bottom: 1px solid rgba(0, 0, 0, 0.26);
+
 	outline: none;
 }
 
@@ -41,45 +48,50 @@ input[type="text"]:placeholder {
 /* Toolbar */
 .toolbar {
 	position: fixed;
+
 	z-index: 10;
 	top:0;
 	left:0;
-	width: 100%;
-	max-width: inherit;
 
+	width: 100%;
 	height: 64px;
-	padding: 0;
+
 	background-color: #2196F3;
 	color: #fafafa;
 	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26);
+
 	overflow:hidden;
+
 	transition: padding 500ms;
 }
 
-.toolbar>.title {
-	padding: 22px 0 22px 0;
-	margin-left:80px;
+.toolbar .title {
+	margin-left: 80px;
+    padding: 22px 0;
+
 	font-size: 20px;
 }
 
-.toolbar>.status {
+.toolbar .status {
 	float: right;
 	margin-right: 16px;
-	padding: 26px 0 23px 0;
-	transition: margin 500ms;
+    padding: 26px 0 22px;
 }
 
 button.open_drawer {
+    position: relative;
 	float: left;
+
 	margin: 8px 0 8px 12px;
+    padding: 7px;
+
 	width: 48px;
 	height: 48px;
-	padding: 7px;
-	position: relative;
 }
 
 button.open_drawer:before {
 	content: 'menu';
+
 	left: 7px;
 	top: 7px;
 }
@@ -87,7 +99,6 @@ button.open_drawer:before {
 
 /* Content */
 body {
-	padding-left: 0;
 	position: relative;
 	transition: padding 500ms;
 }
@@ -96,19 +107,10 @@ body {
 	position: relative;
 
 	height: 48px;
-	padding: 0 0 0 16px;
 	border: 0 solid rgba(0, 0, 0, 0.11);
 	border-top-width: 1px;
 
 	background: white;
-	text-decoration: none;
-	color: black;
-}
-
-.task:after {
-	content: '';
-	display: block;
-	clear: both;
 }
 
 .task:first-child {
@@ -119,74 +121,78 @@ body {
 	border-bottom-width: 1px;
 }
 
-.task.no_label button.edit, .task.no_label button.delete, 
-.task.no_label .label,
-.task:hover .label_selector_overlay {
-	display: none;
+.task_text, .editor {
+    margin: 0 16px 0 56px;
+    padding: 16px 0 15px;
+
+    color: rgba(0, 0, 0, 0.87);
 }
 
+.editor {
+    display: none;
 
-.task:hover button.edit, .task:hover button.delete, .task:hover .label {
-	opacity: 1;
-	display: block;
+    margin-right: 56px;
+    padding-top: 8px;
 }
 
-.task.edit button.cancel.icon,
-.task.edit .editor {
-	display: block;
+input.editor_field {
+    margin: 0;
+    padding-top: 6px;
+    padding-bottom: 2px;
+
+    width: 100%;
+    height: 28px;
 }
 
-.task.edit button.edit, .task.edit button.delete,
-.task.edit .label, .task.edit .task_text,
-.task.edit .label_selector_wrapper {
-	display: none;
-}
-
-.task.done .task_text {
-	text-decoration: line-through;
-}
-
+/* Content buttons */
 button.checkbox {
 	position: relative;
 	float: left;
-	margin: 12px 0 0 0;
+
+    margin: 6px 0 5px 10px;
+    padding: 6px 6px;
+
+    width: 36px;
+    height: 36px;
 }
 
 button.checkbox.icon:before {
-	left: -6px;
-	top: -6px;
-	content:'check_box_outline_blank';
-
-}
-.task.done button.checkbox:before {
-	content: 'check_box';
+    content:'check_box_outline_blank';
 }
 
-.label.icon, button.edit.icon, button.delete.icon, button.cancel.icon	{
-	box-sizing: content-box; 
+.label.icon, 
+button.edit.icon,
+button.delete.icon,
+button.cancel.icon {
 	position: relative;
 	float: right;
-	padding: 12px 8px;
+
+    z-index: 3;
+	padding: 12px 8px 11px;
+
+    width: 40px;
+    height: 47px;
+
 	opacity: 0;
-	z-index: 3;
-	display: block;
+	
 }
 
-.label.icon:before, button.edit.icon:before, button.delete.icon:before,
+.label.icon:before, 
+button.edit.icon:before, 
+button.delete.icon:before,
 button.cancel.icon:before {
 	top: 12px;
 	left: 8px;
 }
 
-.label.icon, button.cancel.icon {
-	margin-right: 0;
-	opacity: 1;
-	z-index: 1;
-	padding-right: 16px;
-}
-
+.label.icon, 
 button.cancel.icon {
-	display: none;
+    z-index: 1;
+	margin-right: 0;
+    padding-right: 16px;
+
+    width: 48px;
+
 	opacity: 1;
 }
 
@@ -206,135 +212,180 @@ button.cancel:before {
 	content:'undo';
 }
 
-.task_text, .editor {
-	opacity: 0.87;
-	margin: 0 16px 0 40px;
-	padding-top: 16px;
+/* Content states */
+button.cancel.icon,
+.task.no_label button.edit,
+.task.no_label button.delete,
+.task.no_label .label,
+.task:hover .label_selector_overlay {
+    display: none;
 }
 
-.editor {
-	display: none;
-	padding-top: 8px;
-	margin-right: 56px;
+.task:hover button.edit,
+.task:hover button.delete,
+.task:hover .label {
+    display: block;
+    opacity: 1;
 }
 
-input.editor_field {
-	 margin: 0;
-	 height: 28px;
-	 padding-top: 6px;
-	 padding-bottom: 2px;
-	 width: 100%;
+.task.edit button.cancel.icon,
+.task.edit .editor {
+    display: block;
 }
 
+.task.edit button.edit,
+.task.edit button.delete,
+.task.edit .label,
+.task.edit .task_text,
+.task.edit .label_selector_wrapper {
+    display: none;
+}
+
+/* Content label selector */
 .label_selector_wrapper {
 	position: absolute;
+    display: block;
+
+    z-index: 2;
 	right: 0;
 	top: 0;
+
 	width: 128px;
-	height: 48px;
-	display: block;
-	z-index: 2;
+	height: 47px;
+
 	font-size: 14px;
 }
 
 .label_selector_overlay {
-	opacity: 0.87;
 	position: absolute;
 	display: block;
-	width: 100%;
+    text-align: right;
+
+    z-index: 1;
 	left:0;
 	top: 0;
-	padding: 0 48px 0 8px;
-	height: 48px;
-	z-index: 1;
-	line-height: 50px;
-	text-align: right;
+	padding: 18px 48px 15px 8px;
+
+    width: 100%;
+	height: 47px;
+
 	color: rgba(0, 0, 0, 0.54);
 }
 
 .label_selector {
+    position: relative;
+
+    z-index: 2;
+
 	width: 100%;
 	height: 100%;
-	z-index: 2;
-	position: relative;
-	padding-left: 4px;
-	cursor: pointer;
+
 	opacity: 0;
+    cursor: pointer;
+}
+
+/* Content done */
+.task.done .task_text {
+    text-decoration: line-through;
+}
+
+.task.done button.checkbox:before {
+    content: 'check_box';
 }
 
 
 /* Content adder */
 .task.new {
-	background: transparent;
-	height: 64px;
 	padding-right: 16px;
+
+    height: 64px;
+
+    background: transparent;
+}
+
+.task.new .task_new_wrapper, 
+.task.new .label_selector_wrapper {
+    padding: 12px 0 14px;
+    height: 64px;
 }
 
 .task.new .task_new_wrapper {
-	margin: 0 168px 0 40px;
-	padding-top: 12px;
+	margin: 0 168px 0 56px;
 }
 
 input.task_new_field {
 	width: 100%;
 }
 
-input.task_new_field, .task.new .label_selector_overlay {
-	opacity: 0.87;
-	margin: 0;
-	padding-top: 0;
-	padding-bottom: 8px;
-	height: 38px;
+input.task_new_field,
+.task.new .label_selector_overlay {
+    margin: 0;
+    padding: 0 0 7px;
+
+    height: 38px;
+
+	color: rgba(0, 0, 0, 0.87);
 	font-size: 24px;
 }
 
 .task.new .label_selector_wrapper {
 	position: relative;
 	float: right;
+
+    padding: 12px 0 14px;
+
 	width: 152px;
-	height: 50px;
-	border-bottom: 1px solid rgba(0, 0, 0, 0.26);
 }
 
 
-.task.new .label_selector {	
-	width: 100%;
-	height: 38px;
-	margin-top: 10px;
-	z-index: 2;
-	position: relative;
+.task.new .label_selector {
+    z-index: 2;
+
+    width: 100%;
+    height: 38px;
+
 	font-size: 24px;
 }
 
 .task.new .label {
 	position: absolute;
+
+    z-index: 0;
+    top: 0;
 	right: 0;
-	top: 2px;
-	margin: 0;
-	z-index: 0;
+	margin: 12px 0 0;
+    padding: 4px 0 10px;
+
+    width: 24px;
+    height: 38px;
 }
 
 .task.new .label:before {
-	top: 16px;
-	right: 0;
-	left: auto;
+	top: 4px;
+    left: 0;
 }
 
 .task.new .label_selector_overlay {
 	position: absolute;
-	line-height: 30px;
-	left: 0;
-	top: 12px;
+    text-align: left;
+
+    padding: 4px 24px 9px 0;
+
+    z-index: 1;
+    top: 12px;
+    left: 0;
+
 	width: 100%;
-	z-index: 1;
+
 	color: rgba(0, 0, 0, 0.87);
-	padding: 0;
-	padding-right: 24px;
-	text-align: left;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.26);
 }
 
 .task.new button.checkbox {
-	margin-top: 20px;
+    margin-top: 14px;
+    margin-bottom: 14px;
+
+    height: 36px;
 }
 
 .task.new:hover .label_selector_overlay {
@@ -387,7 +438,7 @@ body.open_drawer>.drawer {
 
 .drawer_section {
 	border-bottom: 1px solid #CED6DF;
-	padding: 4px 0 3px 0;
+	padding: 4px 0 3px;
 }
 .drawer_section:last-child{
 	border-bottom:0;
@@ -397,7 +448,7 @@ body.open_drawer>.drawer {
 .drawer_header {
 	color: rgba(0, 0, 0, 0.54);
 	font-weight: bold;
-	padding: 17px 16px 17px 16px;
+	padding: 17px 16px;
 	height: 48px;
 }
 
@@ -538,7 +589,7 @@ input.search_field {
 }
 
 .control {
-	padding: 4px 16px 3px 16px;
+	padding: 4px 16px 3px;
 }
 
 .control .drawer_header {
