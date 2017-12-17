@@ -22,7 +22,7 @@
 		<h1 class="title ellipsis">Todo Web App</h1>
 	</header>
 	<main class="content open_drawer">
-			<form class="line new">	
+			<form class="task new">	
 				<button class="checkbox icon big"></button>
 				<label class="label_selector_wrapper default">
 					<span class="label_selector_overlay ellipsis">Pick a label</span>
@@ -32,11 +32,11 @@
 					</select>
 					<div class="label icon gray"></div>
 				</label>				
-				<div class="add_wrapper">
-					<input type="text" class="add" placeholder="Type in your task and press enter">
+				<div class="task_new_wrapper">
+					<input type="text" class="task_new_field" placeholder="Type in your task and press enter">
 				</div>
 			</form>
-			<article class="line done">		
+			<article class="task done">		
 				<button class="checkbox icon big"></button>
 				<label class="label_selector_wrapper">
 					<span class="label_selector_overlay ellipsis">Difficult</span>
@@ -49,12 +49,12 @@
 				<button class="edit icon"></button>
 				<button class="delete icon"></button>
 				<button class="cancel icon"></button>
-				<h2 class="text ellipsis">Title</h2>
+				<h2 class="task_text ellipsis">Title</h2>
 				<form class="editor">
-					<input type="text" value="Title">
+					<input class="editor_field" type="text" value="Title">
 				</form>
 			</article>
-			<article class="line">		
+			<article class="task">		
 				<button class="checkbox icon big"></button>
 				<label class="label_selector_wrapper">
 					<span class="label_selector_overlay ellipsis">Difficult</span>
@@ -67,12 +67,12 @@
 				<button class="edit icon"></button>
 				<button class="delete icon"></button>
 				<button class="cancel icon"></button>
-				<h2 class="text ellipsis">Title</h2>
+				<h2 class="task_text ellipsis">Title</h2>
 				<form class="editor">
-					<input type="text" value="Title">
+					<input class="editor_field" type="text" value="Title">
 				</form>
 			</article>
-			<article class="line">		
+			<article class="task">		
 				<button class="checkbox icon big"></button>
 				<label class="label_selector_wrapper">
 					<span class="label_selector_overlay ellipsis">Important</span>
@@ -85,12 +85,12 @@
 				<button class="edit icon"></button>
 				<button class="delete icon"></button>
 				<button class="cancel icon"></button>
-				<h2 class="text ellipsis">Title</h2>
+				<h2 class="task_text ellipsis">Title</h2>
 				<form class="editor">
-					<input type="text" value="Title">
+					<input class="editor_field" type="text" value="Title">
 				</form>
 			</article>
-			<article class="line edit">		
+			<article class="task edit">		
 				<button class="checkbox icon big"></button>
 				<label class="label_selector_wrapper">
 					<span class="label_selector_overlay ellipsis">Important</span>
@@ -103,12 +103,12 @@
 				<button class="edit icon"></button>
 				<button class="delete icon"></button>
 				<button class="cancel icon"></button>
-				<h2 class="text ellipsis">Title text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text</h2>
+				<h2 class="task_text ellipsis">Title text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text</h2>
 				<form class="editor">
-					<input type="text" value="Title">
+					<input class="editor_field" type="text" value="Title">
 				</form>
 			</article>
-			<article class="line no_label done">		
+			<article class="task no_label done">		
 				<button class="checkbox icon big"></button>
 				<label class="label_selector_wrapper">
 					<span class="label_selector_overlay ellipsis"></span>
@@ -121,12 +121,12 @@
 				<button class="edit icon"></button>
 				<button class="delete icon"></button>
 				<button class="cancel icon"></button>
-				<h2 class="text ellipsis">Title</h2>
+				<h2 class="task_text ellipsis">Title</h2>
 				<form class="editor">
-					<input type="text" value="Title">
+					<input class="editor_field" type="text" value="Title">
 				</form>
 			</article>
-			<article class="line no_label edit">		
+			<article class="task no_label edit">		
 				<button class="checkbox icon big"></button>
 				<label class="label_selector_wrapper">
 					<span class="label_selector_overlay ellipsis"></span>
@@ -139,12 +139,12 @@
 				<button class="edit icon"></button>
 				<button class="delete icon"></button>
 				<button class="cancel icon"></button>
-				<h2 class="text ellipsis">Title</h2>
+				<h2 class="task_text ellipsis">Title</h2>
 				<form class="editor">
-					<input type="text" value="Title">
+					<input class="editor_field" type="text" value="Title">
 				</form>
 			</article>
-			<article class="line no_label">		
+			<article class="task no_label">		
 				<button class="checkbox icon big"></button>
 				<label class="label_selector_wrapper">
 					<span class="label_selector_overlay ellipsis"></span>
@@ -157,12 +157,12 @@
 				<button class="edit icon"></button>
 				<button class="delete icon"></button>
 				<button class="cancel icon"></button>
-				<h2 class="text ellipsis">Title</h2>
+				<h2 class="task_text ellipsis">Title</h2>
 				<form class="editor">
-					<input type="text" value="Title">
+					<input class="editor_field" type="text" value="Title">
 				</form>
 			</article>
-			<article class="line no_label">		
+			<article class="task no_label">		
 				<button class="checkbox icon big"></button>
 				<label class="label_selector_wrapper">
 					<span class="label_selector_overlay ellipsis"></span>
@@ -175,12 +175,12 @@
 				<button class="edit icon"></button>
 				<button class="delete icon"></button>
 				<button class="cancel icon"></button>
-				<h2 class="text ellipsis">Title</h2>
+				<h2 class="task_text ellipsis">Title</h2>
 				<form class="editor">
-					<input type="text" value="Title">
+					<input class="editor_field" type="text" value="Title">
 				</form>
 			</article>
-			<article class="line done">		
+			<article class="task done">		
 				<button class="checkbox icon big"></button>
 				<label class="label_selector_wrapper">
 					<span class="label_selector_overlay ellipsis">Difficult</span>
@@ -193,12 +193,12 @@
 				<button class="edit icon"></button>
 				<button class="delete icon"></button>
 				<button class="cancel icon"></button>
-				<h2 class="text ellipsis">Title</h2>
+				<h2 class="task_text ellipsis">Title</h2>
 				<form class="editor">
-					<input type="text" value="Title">
+					<input class="editor_field" type="text" value="Title">
 				</form>
 			</article>
-			<article class="line">		
+			<article class="task">		
 				<button class="checkbox icon big"></button>
 				<label class="label_selector_wrapper">
 					<span class="label_selector_overlay ellipsis">Difficult</span>
@@ -211,12 +211,12 @@
 				<button class="edit icon"></button>
 				<button class="delete icon"></button>
 				<button class="cancel icon"></button>
-				<h2 class="text ellipsis">Title</h2>
+				<h2 class="task_text ellipsis">Title</h2>
 				<form class="editor">
-					<input type="text" value="Title">
+					<input class="editor_field" type="text" value="Title">
 				</form>
 			</article>
-			<article class="line">		
+			<article class="task">		
 				<button class="checkbox icon big"></button>
 				<label class="label_selector_wrapper">
 					<span class="label_selector_overlay ellipsis">Green</span>
@@ -229,12 +229,12 @@
 				<button class="edit icon"></button>
 				<button class="delete icon"></button>
 				<button class="cancel icon"></button>
-				<h2 class="text ellipsis">Title</h2>
+				<h2 class="task_text ellipsis">Title</h2>
 				<form class="editor">
-					<input type="text" value="Title">
+					<input class="editor_field" type="text" value="Title">
 				</form>
 			</article>
-			<article class="line">		
+			<article class="task">		
 				<button class="checkbox icon big"></button>
 				<label class="label_selector_wrapper">
 					<span class="label_selector_overlay ellipsis">Important</span>
@@ -247,12 +247,12 @@
 				<button class="edit icon"></button>
 				<button class="delete icon"></button>
 				<button class="cancel icon"></button>
-				<h2 class="text ellipsis">Title text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text</h2>
+				<h2 class="task_text ellipsis">Title text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text</h2>
 				<form class="editor">
-					<input type="text" value="Title">
+					<input class="editor_field" type="text" value="Title">
 				</form>
 			</article>
-			<article class="line no_label">		
+			<article class="task no_label">		
 				<button class="checkbox icon big"></button>
 				<label class="label_selector_wrapper">
 					<span class="label_selector_overlay ellipsis"></span>
@@ -265,12 +265,12 @@
 				<button class="edit icon"></button>
 				<button class="delete icon"></button>
 				<button class="cancel icon"></button>
-				<h2 class="text ellipsis">Title text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text</h2>
+				<h2 class="task_text ellipsis">Title text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text</h2>
 				<form class="editor">
-					<input type="text" value="Title">
+					<input class="editor_field" type="text" value="Title">
 				</form>
 			</article>
-			<article class="line no_label">		
+			<article class="task no_label">		
 				<button class="checkbox icon big"></button>
 				<label class="label_selector_wrapper">
 					<span class="label_selector_overlay ellipsis"></span>
@@ -283,12 +283,12 @@
 				<button class="edit icon"></button>
 				<button class="delete icon"></button>
 				<button class="cancel icon"></button>
-				<h2 class="text ellipsis">Title</h2>
+				<h2 class="task_text ellipsis">Title</h2>
 				<form class="editor">
-					<input type="text" value="Title">
+					<input class="editor_field" type="text" value="Title">
 				</form>
 			</article>
-			<article class="line no_label">		
+			<article class="task no_label">		
 				<button class="checkbox icon big"></button>
 				<label class="label_selector_wrapper">
 					<span class="label_selector_overlay ellipsis"></span>
@@ -301,12 +301,12 @@
 				<button class="edit icon"></button>
 				<button class="delete icon"></button>
 				<button class="cancel icon"></button>
-				<h2 class="text ellipsis">Title</h2>
+				<h2 class="task_text ellipsis">Title</h2>
 				<form class="editor">
-					<input type="text" value="Title">
+					<input class="editor_field" type="text" value="Title">
 				</form>
 			</article>
-			<article class="line no_label">		
+			<article class="task no_label">		
 				<button class="checkbox icon big"></button>
 				<label class="label_selector_wrapper">
 					<span class="label_selector_overlay ellipsis"></span>
@@ -319,12 +319,12 @@
 				<button class="edit icon"></button>
 				<button class="delete icon"></button>
 				<button class="cancel icon"></button>
-				<h2 class="text ellipsis">Title</h2>
+				<h2 class="task_text ellipsis">Title</h2>
 				<form class="editor">
-					<input type="text" value="Title">
+					<input class="editor_field" type="text" value="Title">
 				</form>
 			</article>
-			<article class="line no_label">		
+			<article class="task no_label">		
 				<button class="checkbox icon big"></button>
 				<label class="label_selector_wrapper">
 					<span class="label_selector_overlay ellipsis"></span>
@@ -337,12 +337,12 @@
 				<button class="edit icon"></button>
 				<button class="delete icon"></button>
 				<button class="cancel icon"></button>
-				<h2 class="text ellipsis">Title</h2>
+				<h2 class="task_text ellipsis">Title</h2>
 				<form class="editor">
-					<input type="text" value="Title">
+					<input class="editor_field" type="text" value="Title">
 				</form>
 			</article>
-			<article class="line done">		
+			<article class="task done">		
 				<button class="checkbox icon big"></button>
 				<label class="label_selector_wrapper">
 					<span class="label_selector_overlay ellipsis">Difficult</span>
@@ -355,12 +355,12 @@
 				<button class="edit icon"></button>
 				<button class="delete icon"></button>
 				<button class="cancel icon"></button>
-				<h2 class="text ellipsis">Title</h2>
+				<h2 class="task_text ellipsis">Title</h2>
 				<form class="editor">
-					<input type="text" value="Title">
+					<input class="editor_field" type="text" value="Title">
 				</form>
 			</article>
-			<article class="line">		
+			<article class="task">		
 				<button class="checkbox icon big"></button>
 				<label class="label_selector_wrapper">
 					<span class="label_selector_overlay ellipsis">Difficult</span>
@@ -373,12 +373,12 @@
 				<button class="edit icon"></button>
 				<button class="delete icon"></button>
 				<button class="cancel icon"></button>
-				<h2 class="text ellipsis">Title</h2>
+				<h2 class="task_text ellipsis">Title</h2>
 				<form class="editor">
-					<input type="text" value="Title">
+					<input class="editor_field" type="text" value="Title">
 				</form>
 			</article>
-			<article class="line">		
+			<article class="task">		
 				<button class="checkbox icon big"></button>
 				<label class="label_selector_wrapper">
 					<span class="label_selector_overlay ellipsis">Green</span>
@@ -391,9 +391,9 @@
 				<button class="edit icon"></button>
 				<button class="delete icon"></button>
 				<button class="cancel icon"></button>
-				<h2 class="text ellipsis">Title</h2>
+				<h2 class="task_text ellipsis">Title</h2>
 				<form class="editor">
-					<input type="text" value="Title">
+					<input class="editor_field" type="text" value="Title">
 				</form>
 			</article>
 	</main>
@@ -432,7 +432,7 @@
 				<button class="drawer_line ellipsis icon eye green">Why</button>
 			</div>
 			<form class="drawer_form">
-				<input type="text" class="labels_add" placeholder="Add a label">
+				<input type="text" class="label_add" placeholder="Add a label">
 				<button class="label_clear input icon"></button>
 			</form>
 		</section>
@@ -444,6 +444,6 @@
 			</header>
 		</section>
 	</aside>
-	<div class="tap_block" onclick="toggleDrawer()"></div>
+	<div class="fader" onclick="toggleDrawer()"></div>
 </body>
 </html>

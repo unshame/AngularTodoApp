@@ -9,6 +9,7 @@ body {
     min-height: 100%;
     overflow-x: hidden;
     padding-top: 72px;
+    font-size: 16px;
 }
 
 input[type="text"] {
@@ -16,12 +17,11 @@ input[type="text"] {
     padding: 8px 0;
     margin: 8px 0;
     border-bottom: 1px solid rgba(0, 0, 0, 0.26);
-    font-size: 16px;
     outline: none;
 }
 
 input[type="text"]:focus {
-    border-bottom: 1px solid rgba(33, 150, 243, 0.87);;
+    border-bottom: 1px solid rgba(33, 150, 243, 0.87);
 }
 
 input[type="text"]::-webkit-input-placeholder,
@@ -48,7 +48,6 @@ input[type="text"]:placeholder {
     max-width: inherit;
 
 	height: 64px;
-	font-size: 18px;
 	padding: 0;
 	background-color: #2196F3;
 	color: #fafafa;
@@ -66,13 +65,13 @@ input[type="text"]:placeholder {
 .toolbar>.status {
     float: right;
     margin-right: 16px;
-    padding: 24px 0 23px 0;
+    padding: 26px 0 23px 0;
     transition: margin 500ms;
 }
 
 button.open_drawer {
     float: left;
-    margin: 8px 0px 8px 12px;
+    margin: 8px 0 8px 12px;
     width: 48px;
     height: 48px;
     padding: 7px;
@@ -93,13 +92,12 @@ body {
     transition: padding 500ms;
 }
 
-.line {
-    box-sizing: border-box;
+.task {
     position: relative;
 
     height: 48px;
     padding: 0 0 0 16px;
-    border: 0px solid rgba(0, 0, 0, 0.11);
+    border: 0 solid rgba(0, 0, 0, 0.11);
     border-top-width: 1px;
 
     background: white;
@@ -107,44 +105,44 @@ body {
     color: black;
 }
 
-.line:after {
+.task:after {
     content: '';
     display: block;
     clear: both;
 }
 
-.line:first-child {
-    border-top-width: 0px;
+.task:first-child {
+    border-top-width: 0;
 }
 
-.line:last-child {
+.task:last-child {
     border-bottom-width: 1px;
 }
 
-.line.no_label button.edit, .line.no_label button.delete, 
-.line.no_label .label,
-.line:hover .label_selector_overlay {
+.task.no_label button.edit, .task.no_label button.delete, 
+.task.no_label .label,
+.task:hover .label_selector_overlay {
     display: none;
 }
 
 
-.line:hover button.edit, .line:hover button.delete, .line:hover .label {
+.task:hover button.edit, .task:hover button.delete, .task:hover .label {
     opacity: 1;
     display: block;
 }
 
-.line.edit button.cancel.icon,
-.line.edit .editor {
+.task.edit button.cancel.icon,
+.task.edit .editor {
     display: block;
 }
 
-.line.edit button.edit, .line.edit button.delete,
-.line.edit .label, .line.edit .text,
-.line.edit .label_selector_wrapper {
+.task.edit button.edit, .task.edit button.delete,
+.task.edit .label, .task.edit .task_text,
+.task.edit .label_selector_wrapper {
     display: none;
 }
 
-.line.done .text {
+.task.done .task_text {
     text-decoration: line-through;
 }
 
@@ -160,15 +158,15 @@ button.checkbox.icon:before {
     content:'check_box_outline_blank';
 
 }
-.line.done button.checkbox:before {
+.task.done button.checkbox:before {
     content: 'check_box';
 }
 
 .label.icon, button.edit.icon, button.delete.icon, button.cancel.icon  {
+    box-sizing: content-box; 
     position: relative;
     float: right;
     padding: 12px 8px;
-    box-sizing: content-box;
     opacity: 0;
     z-index: 3;
     display: block;
@@ -208,8 +206,7 @@ button.cancel:before {
     content:'undo';
 }
 
-.text, .editor {
-    font-size: 16px;
+.task_text, .editor {
     opacity: 0.87;
     margin: 0 16px 0 40px;
     padding-top: 16px;
@@ -218,9 +215,10 @@ button.cancel:before {
 .editor {
     display: none;
     padding-top: 8px;
+    margin-right: 56px;
 }
 
-.editor>input {
+input.editor_field {
    margin: 0;
    height: 28px;
    padding-top: 6px;
@@ -236,11 +234,11 @@ button.cancel:before {
     height: 48px;
     display: block;
     z-index: 2;
+    font-size: 14px;
 }
 
 .label_selector_overlay {
     opacity: 0.87;
-    font-size: 14px;
     position: absolute;
     display: block;
     width: 100%;
@@ -256,7 +254,6 @@ button.cancel:before {
 
 .label_selector {
     width: 100%;
-    font-size: 14px;
     height: 100%;
     z-index: 2;
     position: relative;
@@ -267,22 +264,22 @@ button.cancel:before {
 
 
 /* Content adder */
-.line.new {
+.task.new {
     background: transparent;
     height: 64px;
     padding-right: 16px;
 }
 
-.line.new .add_wrapper {
+.task.new .task_new_wrapper {
     margin: 0 168px 0 40px;
     padding-top: 12px;
 }
 
-.line.new .add {
+input.task_new_field {
     width: 100%;
 }
 
-.line.new .add, .line.new .label_selector_overlay {
+input.task_new_field, .task.new .label_selector_overlay {
     opacity: 0.87;
     margin: 0;
     padding-top: 0;
@@ -291,7 +288,7 @@ button.cancel:before {
     font-size: 24px;
 }
 
-.line.new .label_selector_wrapper {
+.task.new .label_selector_wrapper {
     position: relative;
     float: right;
     width: 152px;
@@ -300,16 +297,16 @@ button.cancel:before {
 }
 
 
-.line.new .label_selector {    
+.task.new .label_selector {    
     width: 100%;
     height: 38px;
-    font-size: 24px;
     margin-top: 10px;
     z-index: 2;
     position: relative;
+    font-size: 24px;
 }
 
-.line.new .label {
+.task.new .label {
     position: absolute;
     right: 0;
     top: 2px;
@@ -317,13 +314,13 @@ button.cancel:before {
     z-index: 0;
 }
 
-.line.new .label:before {
+.task.new .label:before {
     top: 16px;
     right: 0;
     left: auto;
 }
 
-.line.new .label_selector_overlay {
+.task.new .label_selector_overlay {
     position: absolute;
     line-height: 30px;
     left: 0;
@@ -336,15 +333,15 @@ button.cancel:before {
     text-align: left;
 }
 
-.line.new button.checkbox {
+.task.new button.checkbox {
     margin-top: 20px;
 }
 
-.line.new:hover .label_selector_overlay {
+.task.new:hover .label_selector_overlay {
     display: block;
 }
 
-.line.new .label_selector_wrapper.default .label_selector_overlay{
+.task.new .label_selector_wrapper.default .label_selector_overlay{
     color: rgba(0, 0, 0, 0.54);
 }
 
@@ -361,6 +358,7 @@ button.cancel:before {
     transition: left 500ms;
     border-right: 1px solid rgba(0, 0, 0, 0.11);
     z-index: 11;
+    font-size: 14px;
 }
 
 body.open_drawer>.toolbar {
@@ -375,7 +373,7 @@ body.open_drawer>.drawer {
     left: 0;
 }
 
-.tap_block {
+.fader {
     position: fixed;
     left: 0;
     top: 0;
@@ -389,7 +387,7 @@ body.open_drawer>.drawer {
 
 .drawer_section {
     border-bottom: 1px solid #CED6DF;
-    padding: 4px 0px 3px 0;
+    padding: 4px 0 3px 0;
 }
 .drawer_section:last-child{
     border-bottom:0;
@@ -397,7 +395,6 @@ body.open_drawer>.drawer {
 }
 
 .drawer_header {
-    font-size: 14px;
     color: rgba(0, 0, 0, 0.54);
     font-weight: bold;
     padding: 17px 16px 17px 16px;
@@ -411,7 +408,6 @@ body.open_drawer>.drawer {
     text-align: left;
     width: 100%;
     height:48px;
-    font-size:14px;
     font-weight:bold;
     color: rgba(0, 0, 0, 0.87);
     padding-right: 16px;
@@ -419,7 +415,6 @@ body.open_drawer>.drawer {
 .drawer_line.icon:before {
     left: 16px;
     top: 12px;
-    font-size:24px;
     color: rgba(0, 0, 0, 0.54);
 }
 
@@ -457,7 +452,6 @@ body.open_drawer>.drawer {
     height: 36px;
     margin-top: 8px;
     color:white;
-    font-size:14px;
     font-weight:bold;
     background: #2196F3;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.57);
@@ -557,7 +551,7 @@ input.search_field {
     border-bottom: 0;
 }
 
-input.labels_add {
+input.label_add {
     margin: 0;
     padding-left: 72px;
     width: 100%;
@@ -579,11 +573,11 @@ input.labels_add {
         display: none;
     }
 
-    body.open_drawer>.tap_block {
+    body.open_drawer>.fader {
         display: block;
     }
     body.open_drawer>.drawer{
-        box-shadow: 2px 0px 20px rgba(0, 0, 0, 0.27);
+        box-shadow: 2px 0 20px rgba(0, 0, 0, 0.27);
     }
 }
 
