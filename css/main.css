@@ -6,7 +6,9 @@ body {
     font-family: 'Roboto', sans-serif;
     background: #FAFAFA;
     position:relative;
-    height:100%;
+    min-height: 100%;
+    overflow-x: hidden;
+    padding-top: 72px;
 }
 
 input[type="text"] {
@@ -34,7 +36,6 @@ input[type="text"]:focus {
 	height: 64px;
 	font-size: 18px;
 	padding: 0;
-	box-sizing: border-box;
 	background-color: #2196F3;
 	color: #fafafa;
 	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26);
@@ -76,11 +77,9 @@ button.open_drawer:before {
 
 /* Content */
 .content {
-    left: 0;
-    position: absolute;
-    top: 72px;
-    right: 0;
-    transition: left 500ms;
+    margin-left: 0;
+    position: relative;
+    transition: margin 500ms;
 }
 
 .line {
@@ -111,18 +110,23 @@ button.open_drawer:before {
     border-bottom-width: 1px;
 }
 
-.line:hover button.edit, .line:hover button.delete {
-    opacity: 1;
-}
 
 .line:hover .label_selector_overlay {
     display: none;
 }
 
+.line.no_label button.edit, .line.no_label button.delete, 
+.line.no_label .label,
 .line.edit button.edit, .line.edit button.delete,
 .line.edit .label, .line.edit .text,
 .line.edit .label_selector_wrapper {
     display: none;
+}
+
+
+.line:hover button.edit, .line:hover button.delete, .line:hover .label {
+    opacity: 1;
+    display: block;
 }
 
 .line.edit .editor {
@@ -341,7 +345,7 @@ body.open_drawer>.toolbar {
 }
 
 body.open_drawer>.content {
-    left: 256px;
+    margin-left: 256px;
 }
 
 body.open_drawer>.drawer {
@@ -506,7 +510,7 @@ input.labels_add {
     }
 
     body.open_drawer>.content {
-        left: 0;
+        margin-left: 0;
     }
 
     body.open_drawer>.toolbar>h1 {
@@ -532,7 +536,7 @@ input.labels_add {
         margin-left: 16px;
     }
     .content {
-        left: 256px;
+        margin-left: 256px;
     }
     button.open_drawer {
        display: none;
@@ -553,7 +557,7 @@ input.labels_add {
         border-bottom: 0;
     }
     .toolbar {
-        width: 844px;
+        width: 842px;
         margin: auto;
         left: auto;
         right: auto;
@@ -566,7 +570,7 @@ input.labels_add {
         margin-left: -256px;
     }
     .content {
-        left: 256px;
+        margin-left: 0;
     }
 
 }
