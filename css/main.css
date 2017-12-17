@@ -76,10 +76,10 @@ button.open_drawer:before {
 
 
 /* Content */
-.content {
-    margin-left: 0;
+body {
+    padding-left: 0;
     position: relative;
-    transition: margin 500ms;
+    transition: padding 500ms;
 }
 
 .line {
@@ -355,8 +355,8 @@ body.open_drawer>.toolbar {
     padding-left: 256px;
 }
 
-body.open_drawer>.content {
-    margin-left: 256px;
+body.open_drawer {
+    padding-left: 256px;
 }
 
 body.open_drawer>.drawer {
@@ -521,8 +521,8 @@ input.labels_add {
         overflow-y: hidden;
     }
 
-    body.open_drawer>.content {
-        margin-left: 0;
+    body.open_drawer {
+        padding-left: 0;
     }
 
     body.open_drawer>.toolbar>.title {
@@ -547,8 +547,8 @@ input.labels_add {
     .toolbar>.title {
         margin-left: 16px;
     }
-    .content {
-        margin-left: 256px;
+    body {
+        padding-left: 256px;
     }
     button.open_drawer {
        display: none;
@@ -583,9 +583,9 @@ input.labels_add {
         margin: auto;
         margin-left: -256px;
     }
-    body.open_drawer>.content,
-    .content {
-        margin-left: 0;
+    body.open_drawer,
+    body {
+        padding-left: 256px;
     }
 
 }
