@@ -32,6 +32,12 @@ input[type="text"]:placeholder {
   color: rgba(0, 0, 0, 0.54);
 }
 
+.ellipsis {
+    white-space: nowrap;
+    overflow:hidden;
+    text-overflow: ellipsis;
+}
+
 /* Toolbar */
 .toolbar {
 	position: fixed;
@@ -54,9 +60,6 @@ input[type="text"]:placeholder {
 .toolbar>.title {
     padding: 22px 0 22px 0;
     margin-left:80px;
-    white-space: nowrap;
-    overflow:hidden;
-    text-overflow: ellipsis;
     font-size: 20px;
 }
 
@@ -210,10 +213,6 @@ button.cancel:before {
     opacity: 0.87;
     margin: 0 16px 0 40px;
     padding-top: 16px;
-
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
 }
 
 .editor {
@@ -333,6 +332,7 @@ button.cancel:before {
     z-index: 1;
     color: rgba(0, 0, 0, 0.87);
     padding: 0;
+    padding-right: 24px;
     text-align: left;
 }
 
@@ -414,6 +414,7 @@ body.open_drawer>.drawer {
     font-size:14px;
     font-weight:bold;
     color: rgba(0, 0, 0, 0.87);
+    padding-right: 16px;
 }
 .drawer_line.icon:before {
     left: 16px;
@@ -426,6 +427,10 @@ body.open_drawer>.drawer {
     content: '';
     display: block;
     clear: both;
+}
+
+.drawer_line_wrapper:hover .drawer_line {
+    padding-right: 40px;
 }
 
 .drawer_line_wrapper:hover .label_delete {
@@ -544,6 +549,7 @@ input.search_field {
 
 .control .drawer_header {
     padding-left: 0;
+    padding-right: 0;
 }
 
 .drawer_section.labels {
@@ -555,6 +561,8 @@ input.labels_add {
     margin: 0;
     padding-left: 72px;
     width: 100%;
+    position: relative;
+    z-index: 1;
 }
 
 @media (max-width: 630px)  {
