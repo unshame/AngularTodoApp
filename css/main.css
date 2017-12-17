@@ -110,16 +110,9 @@ button.open_drawer:before {
     border-bottom-width: 1px;
 }
 
-
-.line:hover .label_selector_overlay {
-    display: none;
-}
-
 .line.no_label button.edit, .line.no_label button.delete, 
 .line.no_label .label,
-.line.edit button.edit, .line.edit button.delete,
-.line.edit .label, .line.edit .text,
-.line.edit .label_selector_wrapper {
+.line:hover .label_selector_overlay {
     display: none;
 }
 
@@ -131,6 +124,12 @@ button.open_drawer:before {
 
 .line.edit .editor {
     display: block;
+}
+
+.line.edit button.edit, .line.edit button.delete,
+.line.edit .label, .line.edit .text,
+.line.edit .label_selector_wrapper {
+    display: none;
 }
 
 .line.done .text {
@@ -200,12 +199,13 @@ button.delete:before {
 
 .editor {
     display: none;
+    padding-top: 8px;
 }
 
 .editor>input {
    margin: 0;
-   height: 16px;
-   padding-top: 0;
+   height: 28px;
+   padding-top: 6px;
    padding-bottom: 2px;
    width: 100%;
 }
