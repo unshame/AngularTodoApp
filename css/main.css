@@ -149,11 +149,11 @@ button.checkbox {
 	position: relative;
 	float: left;
 
-    margin: 6px 0 5px 10px;
-    padding: 6px 6px;
+    margin: 6px 0 7px 10px;
+    padding: 5px 5px;
 
-    width: 36px;
-    height: 36px;
+    width: 34px;
+    height: 34px;
 }
 
 button.checkbox.icon:before {
@@ -383,9 +383,9 @@ input.task_new_field,
 
 .task.new button.checkbox {
     margin-top: 14px;
-    margin-bottom: 14px;
+    margin-bottom: 16px;
 
-    height: 36px;
+    height: 34px;
 }
 
 .task.new:hover .label_selector_overlay {
