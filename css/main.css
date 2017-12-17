@@ -43,7 +43,7 @@ input[type="text"]:focus {
     transition: padding 500ms;
 }
 
-.toolbar>h1 {
+.toolbar>.title {
     padding: 22px 0 22px 0;
     margin-left:80px;
     white-space: nowrap;
@@ -372,6 +372,7 @@ body.open_drawer>.drawer {
     background-color: rgba(0, 0, 0, 0.26);
     z-index: 9;
     display: none;
+    cursor: pointer;
 }
 
 .drawer_section {
@@ -524,7 +525,7 @@ input.labels_add {
         margin-left: 0;
     }
 
-    body.open_drawer>.toolbar>h1 {
+    body.open_drawer>.toolbar>.title {
         display: none;
     }
 
@@ -543,7 +544,7 @@ input.labels_add {
     .toolbar {
         padding-left: 256px;
     }
-    .toolbar>h1 {
+    .toolbar>.title {
         margin-left: 16px;
     }
     .content {
