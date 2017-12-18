@@ -43,7 +43,9 @@
 				autofocus>
 			</div>
 
-			<label class="label_selector_wrapper default">
+			<label
+			class="label_selector_wrapper"
+			ng-class="{default: !newTask.label}">
 				<span class="label_selector_overlay ellipsis">{{newTask.label || 'Pick a label'}}</span>
 
 				<select 
