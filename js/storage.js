@@ -18,14 +18,6 @@ function getStoredArrayItem(key, defaultArray){
 }
 
 function setStoredItem(key, value) {
-	if(Array.isArray(value)){
-		value = value.slice();
-		value.forEach(function(item){
-			if(item.$$hashKey){
-				item.$$hashKey = undefined;
-			}
-		})
-	}
-	localStorage.setItem(key, JSON.stringify(value));
+	localStorage.setItem(key, angular.toJson(value));
 	//console.log(localStorage.getItem(key))
 }
