@@ -41,7 +41,9 @@
 				class="task_new_field" 
 				placeholder="Type in your task and press enter"
 				ng-model="newTask.text"
-				autofocus>
+				autofocus
+				get-focus="{{labelSelected}}"
+				ng-focus="labelSelected = false">
 			</div>
 
 			<label
@@ -53,7 +55,8 @@
 				class="label_selector"
 				ng-model="newTask.label" 
 				ng-options="label.key as label.key for label in labels"
-				label-colors>
+				label-colors
+				ng-change="labelSelected = true">
 					<option value="" class="gray">No label</option>
 				</select>
 

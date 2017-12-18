@@ -65,6 +65,9 @@ app.controller('taskController', function($scope, $filter) {
 	// Текст нового лейбла
 	$scope.newLabel = '';
 
+	// Устанавливается на true при изменении лейбла пользователем
+	$scope.labelSelected = false;
+
 	var labels = $scope.labels = getStoredArrayItem(storageKeyLabels, defaultLabels);
 
 	// Возможные цвета
