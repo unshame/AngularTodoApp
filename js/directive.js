@@ -1,3 +1,4 @@
+// Передает фокус на инпут, когда значение стало true
 app.directive('getFocus', function($timeout) {
 	return {
 		scope: { trigger: '@getFocus' },
