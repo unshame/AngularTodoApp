@@ -2,8 +2,7 @@ app.filter('taskFilter', function() {
 	return function($scope) {
 		var filter = $scope.filter;
 		return $scope.tasks.filter(function(task) {
-			return 
-			(      // Фильтруем по введенному тексту
+			return ( // Фильтруем по введенному тексту
 				!filter.searchFor ||
 				task.data.text.toLowerCase().includes(
 					filter.searchFor.toLowerCase()
