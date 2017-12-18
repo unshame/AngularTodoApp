@@ -115,6 +115,15 @@ app.controller('taskController', function($scope, $filter) {
 	// Добавление
 	function addLabel() {
 		if(labelColors.length === 0 || !$scope.newLabel) return;
+
+		var sameLabel = labels.find(function(label) {
+			return label.key == $scope.newLabel;
+		});
+		if(sameLabel){
+			newTask.label = $scope.newLabel;
+			return;
+		}
+		
 		labels.push(createLabel($scope.newLabel, labelColors[0]));
 		labelColors.splice(0, 1);
 		newTask.label = $scope.newLabel;
