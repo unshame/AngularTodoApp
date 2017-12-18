@@ -50,7 +50,7 @@
 				class="label_selector"
 				ng-model="newTask.label" 
 				ng-options="label.key as label.key for label in labels">
-					<option value="">Pick a label</option>
+					<option value="">No label</option>
 				</select>
 
 				<div class="label icon" ng-class="getLabelColor(newTask.label)"></div>
