@@ -70,7 +70,7 @@ app.controller('taskController', function($scope, $filter) {
 	};
 
 	displaySettings = $scope.displaySettings = [
-		'All',
+		'Any',
 		'Active',
 		'Complete'
 	];
@@ -237,7 +237,7 @@ app.controller('taskController', function($scope, $filter) {
 		}
 		else{
 			stats.info += stats.shown + ' out of ' + tasks.length + 
-			(stats.shown == 1 ? ' task' : ' tasks');
+			(tasks.length == 1 ? ' task' : ' tasks');
 		}
 
 		if(stats.remainingTotal === 0){

@@ -8,7 +8,7 @@ app.filter('taskFilter', function() {
 					filter.searchFor.toLowerCase()
 				)
 			) && (
-				filter.display == 'All' ||
+				filter.display == 'Any' ||
 				filter.display == 'Active' && !task.data.done ||
 				filter.display == 'Complete' && task.data.done
 			) && (

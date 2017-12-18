@@ -48,7 +48,7 @@
 				<select 
 				class="label_selector"
 				ng-model="newTask.label" 
-				ng-options="label.key as label.key for label in labels track by label.key">
+				ng-options="label.key as label.key for label in labels">
 					<option value="">Pick a label</option>
 				</select>
 
@@ -207,6 +207,7 @@
 	<div class="fader" ng-click="drawerOpened = !drawerOpened"></div>
 
 	<script src="./lib/angular.js"></script>
+	<script src="./js/polyfill.js"></script>
 	<script src="./js/storage.js"></script>
 	<script src="./js/controller.js"></script>
 	<script src="./js/directive.js"></script>
