@@ -6,7 +6,6 @@ let storageKeyLabels = 'labelStorage';
 let storageKeyDrawer = 'drawerStorage';
 
 app.controller('taskController', function($scope, $filter) {
-
 	
 	// Создание объектов тасков и лейблов
 	function createTask(data, label) {
@@ -59,44 +58,12 @@ app.controller('taskController', function($scope, $filter) {
 		createLabel('Urgent', 'red'),
 		createLabel('Something', 'orange')
 	];
-	
-	// Текст нового лейбла
-	$scope.newLabel = '';
-
-	// Информация о новом таске
-	var newTask = $scope.newTask = {
-		text: '',
-		label: ''
-	};
-
-	// Счетчики и информация
-	var stats = $scope.stats = {
-		shown: 0,
-		remaining: 0,
-		remainingTotal: 0,
-		complete: 0,
-		hidden: 0,
-		allChecked: false,
-		info: '',
-		remainingInfo: ''
-	};
-
-	// Список значений фильтра показа
-	var displaySettings = $scope.displaySettings = [
-		'Any',
-		'Active',
-		'Complete'
-	];
-
-	// Значения всех фильтров
-	var filter = $scope.filter = {
-		showLabelless: true,
-		searchFor: '',
-		display: displaySettings[0]
-	};
 
 
 	/* Лейблы */
+
+	// Текст нового лейбла
+	$scope.newLabel = '';
 
 	var labels = $scope.labels = getStoredArrayItem(storageKeyLabels, defaultLabels);
 
@@ -123,7 +90,7 @@ app.controller('taskController', function($scope, $filter) {
 			newTask.label = $scope.newLabel;
 			return;
 		}
-		
+
 		labels.push(createLabel($scope.newLabel, labelColors[0]));
 		labelColors.splice(0, 1);
 		newTask.label = $scope.newLabel;
@@ -183,6 +150,12 @@ app.controller('taskController', function($scope, $filter) {
 
 
 	/* Таски */
+
+	// Информация о новом таске
+	var newTask = $scope.newTask = {
+		text: '',
+		label: ''
+	};
 
 	var tasks = $scope.tasks = [];
 	var tasksData = $scope.tasksData = getStoredArrayItem(storageKeyTasks, defaultTasks);
@@ -263,20 +236,37 @@ app.controller('taskController', function($scope, $filter) {
 	}
 	$scope.changeTask = changeTask;
 
-	// Возвращает список тасков после применения фильтров
-	function getFilteredTasks() {
-		return $filter('taskFilter')($scope);
-	}
-
 
 	/* Фильтры */
+
+	// Счетчики и информация
+	var stats = $scope.stats = {
+		shown: 0,
+		remaining: 0,
+		remainingTotal: 0,
+		complete: 0,
+		hidden: 0,
+		allChecked: false,
+		info: '',
+		remainingInfo: ''
+	};
+
+	// Список значений фильтра показа
+	var displaySettings = $scope.displaySettings = [
+		'Any',
+		'Active',
+		'Complete'
+	];
+
+	// Значения всех фильтров
+	var filter = $scope.filter = {};
 
 	// Открыто ли меню фильтров
 	$scope.drawerOpened = getStoredItem(storageKeyDrawer) || false;
 
 	// Фильтрует таски и обновляет статистику
 	function filterTasks() {
-		tasksFiltered = $scope.tasksFiltered = getFilteredTasks();
+		tasksFiltered = $scope.tasksFiltered = $filter('taskFilter')($scope);
 		stats.shown = tasksFiltered.length;
 		stats.remainingTotal = tasks.filter(function(task) {
 			return !task.data.done;
@@ -311,11 +301,15 @@ app.controller('taskController', function($scope, $filter) {
 		}
 	}
 
-	// Восстанавливает значения всех фильтров
-	function resetFilters(){
+	function resetFilter(filter) {
 		filter.showLabelless = true;
 		filter.searchFor = '';
 		filter.display = displaySettings[0];
+	}
+
+	// Восстанавливает значения всех фильтров
+	function resetFilters(){
+		resetFilter(filter);
 		labels.forEach(function(label) {
 			label.show = true;
 		});
@@ -330,6 +324,8 @@ app.controller('taskController', function($scope, $filter) {
 		filterTasks();
 	}
 	$scope.toggleFiltered = toggleFiltered;
+
+	resetFilter(filter);
 
 
 	/* Наблюдение за изменениями */
