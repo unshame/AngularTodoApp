@@ -90,7 +90,7 @@
 			<button class="delete icon" ng-click="deleteTask(task)"></button>
 			<button class="cancel icon"></button>
 
-			<h2 class="task_text ellipsis">
+			<h2 class="task_text ellipsis" title="{{task.data.text.length > 35 ? task.data.text : ''}}">
 				{{task.data.text}}
 			</h2>
 
