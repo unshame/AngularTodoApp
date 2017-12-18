@@ -39,42 +39,52 @@
     font-size: 34px;
 }
 
+.white:not(.icon),
 .icon.white:before {
   color: #fafafa;
 }
 
+.gray:not(.icon),
 .icon.gray:before {
   color: rgba(0, 0, 0, 0.26);
 }
 
+.blue:not(.icon),
 .icon.blue:before{
     color: #2196F3;
 }
 
+.red:not(.icon),
 .icon.red:before{
     color: #F44336;
 }
 
+.orange:not(.icon),
 .icon.orange:before{
     color: #FF9800;
 }
 
+.green:not(.icon),
 .icon.green:before{
     color: #4CAF50;
 }
 
+.purple:not(.icon),
 .icon.purple:before{
     color: #673AB7;
 }
 
+.pink:not(.icon),
 .icon.pink:before{
   color: #E91E63;
 }
 
+.yellow:not(.icon),
 .icon.yellow:before{
   color: #FFEB3B;
 }
 
+.aquamarine:not(.icon),
 .icon.aquamarine:before{
   color: #00897B;
 }

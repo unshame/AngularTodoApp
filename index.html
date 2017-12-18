@@ -51,8 +51,9 @@
 				<select 
 				class="label_selector"
 				ng-model="newTask.label" 
-				ng-options="label.key as label.key for label in labels">
-					<option value="">No label</option>
+				ng-options="label.key as label.key for label in labels"
+				label-colors>
+					<option value="" class="gray">No label</option>
 				</select>
 
 				<div class="label icon" ng-class="getLabelColor(newTask.label)"></div>
@@ -80,8 +81,9 @@
 				<select 
 				class="label_selector"
 				ng-model="task.data.label" 
-				ng-options="label.key as label.key for label in labels">
-					<option value="">No label</option>
+				ng-options="label.key as label.key for label in labels"
+				label-colors>
+					<option value="" class="gray">No label</option>
 				</select>
 			</label>
 
