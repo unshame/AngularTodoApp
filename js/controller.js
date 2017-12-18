@@ -136,7 +136,6 @@ app.controller('taskController', function($scope, $filter) {
 
 	function labelIsShown(key) {
 		var label = getLabelByKey(key);
-		console.log(label)
 		if(label) {
 			return label.show;
 		}
