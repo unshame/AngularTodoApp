@@ -23,7 +23,7 @@ app.directive('labelColors', function () {
             scope.labels.forEach(function(label) {
                 var options = elem.find('option');
                 // По какой-то причине 'option[label]' не срабатывает
-                for(var i = 0; i < options.length; i++){
+                for(var i = 1; i < options.length; i++){
                     var option = options[i];
                     if(option.label == label.key){ 
                         angular.element(option).addClass(label.color);
