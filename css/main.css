@@ -329,6 +329,10 @@ input.task_new_field,
 	font-size: 24px;
 }
 
+.task.new select:focus+.label_selector_overlay {
+    border-bottom-color: #2196F3;
+}
+
 .task.new .label_selector_wrapper {
 	position: relative;
 	float: right;

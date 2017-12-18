@@ -49,8 +49,6 @@
 			<label
 			class="label_selector_wrapper"
 			ng-class="{default: !newTask.label}">
-				<span class="label_selector_overlay ellipsis">{{newTask.label || 'Pick a label'}}</span>
-
 				<select 
 				class="label_selector"
 				ng-model="newTask.label" 
@@ -59,6 +57,7 @@
 				ng-change="labelSelected = true">
 					<option value="" class="gray">No label</option>
 				</select>
+				<span class="label_selector_overlay ellipsis">{{newTask.label || 'Pick a label'}}</span>
 
 				<div class="label icon" ng-class="getLabelColor(newTask.label)"></div>
 			</label>
