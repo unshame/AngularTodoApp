@@ -8,442 +8,208 @@
 	<link rel="stylesheet" type="text/css" href="./css/reset.css">
 	<link rel="stylesheet" type="text/css" href="./css/main.css">
 	<link rel="stylesheet" type="text/css" href="./css/icons.css">
-	<script src="./lib/angular.min.js"></script>
-	<script>
-		function toggleDrawer(){
-			document.body.classList.toggle('open_drawer')
-		}
-	</script>
+	<style>[ng-cloak] { display: none; } </style>
 </head>
-<body class="">
+<body ng-app="taskApp" ng-controller="taskController" ng-class="{open_drawer: drawerOpened}">
+
 	<header class="toolbar">
-		<button class="open_drawer icon big white" onclick="toggleDrawer()"></button>
-		<aside class="status">18 tasks left</aside>
+		<button class="open_drawer icon big white" ng-click="drawerOpened = !drawerOpened"></button>
+
+		<aside class="status" ng-cloak ng-show="tasks.length">
+			{{stats.remainingInfo}}
+		</aside>
+
 		<h1 class="title ellipsis">Todo Web App</h1>
 	</header>
-	<main class="content open_drawer">
-			<form class="task new">	
-				<button class="checkbox icon big"></button>
-				<label class="label_selector_wrapper default">
-					<span class="label_selector_overlay ellipsis">Pick a label</span>
-					<select class="label_selector">
-						<option>Pick a label</option>
-						<option>test</option>
-					</select>
-					<div class="label icon gray"></div>
-				</label>				
-				<div class="task_new_wrapper">
-					<input type="text" class="task_new_field" placeholder="Type in your task and press enter">
-				</div>
+
+	<main class="content" ng-cloak>
+
+		<form class="task new" ng-submit="addTask()">	
+			<button
+			type="button"
+			class="checkbox icon big"
+			ng-click="toggleFiltered()"
+			ng-class="{
+				checked: stats.allChecked && stats.shown
+			}"></button>
+
+			<div class="task_new_wrapper">
+				<input 
+				type="text" 
+				class="task_new_field" 
+				placeholder="Type in your task and press enter"
+				ng-model="newTask.text"
+				autofocus>
+			</div>
+
+			<label class="label_selector_wrapper default">
+				<span class="label_selector_overlay ellipsis">{{newTask.label || 'Pick a label'}}</span>
+
+				<select 
+				class="label_selector"
+				ng-model="newTask.label" 
+				ng-options="label.key as label.key for label in labels track by label.key">
+					<option value="">Pick a label</option>
+				</select>
+
+				<div class="label icon" ng-class="getLabelColor(newTask.label)"></div>
+			</label>
+		</form>
+
+		<article 
+		class="task" 
+		ng-repeat="task in tasksFiltered"
+		ng-class="{
+			done: task.data.done,
+			no_label: !task.data.label,
+			edit: task.editing
+		}">		
+			<button
+			class="checkbox icon big"
+			ng-click="task.data.done = !task.data.done"
+			></button>
+
+			<label class="label_selector_wrapper">
+				<span class="label_selector_overlay ellipsis">
+					{{task.data.label}}
+				</span>
+
+				<select 
+				class="label_selector"
+				ng-model="task.data.label" 
+				ng-options="label.key as label.key for label in labels">
+					<option value="">No label</option>
+				</select>
+			</label>
+
+			<div 
+			class="label icon" 
+			ng-class="getLabelColor(task.data.label)"></div>
+
+			<button class="edit icon" ng-click="editTask(task)"></button>
+			<button class="delete icon" ng-click="deleteTask(task)"></button>
+			<button class="cancel icon"></button>
+
+			<h2 class="task_text ellipsis">
+				{{task.data.text}}
+			</h2>
+
+			<form class="editor" ng-submit="changeTask(task)">
+				<input 
+				class="editor_field" 
+				type="text" 
+				ng-model="task.editedText"
+				get-focus="{{task.editing}}"
+				ng-blur="revertTask(task)">
 			</form>
-			<article class="task done">		
-				<button class="checkbox icon big"></button>
-				<label class="label_selector_wrapper">
-					<span class="label_selector_overlay ellipsis">Difficult</span>
-					<select class="label_selector">
-						<option>Pick a label</option>
-						<option>test</option>
-					</select>
-				</label>		
-				<div class="label icon"></div>
-				<button class="edit icon"></button>
-				<button class="delete icon"></button>
-				<button class="cancel icon"></button>
-				<h2 class="task_text ellipsis">Title</h2>
-				<form class="editor">
-					<input class="editor_field" type="text" value="Title">
-				</form>
-			</article>
-			<article class="task">		
-				<button class="checkbox icon big"></button>
-				<label class="label_selector_wrapper">
-					<span class="label_selector_overlay ellipsis">Difficult</span>
-					<select class="label_selector">
-						<option>Pick a label</option>
-						<option>test</option>
-					</select>
-				</label>		
-				<div class="label icon"></div>
-				<button class="edit icon"></button>
-				<button class="delete icon"></button>
-				<button class="cancel icon"></button>
-				<h2 class="task_text ellipsis">Title</h2>
-				<form class="editor">
-					<input class="editor_field" type="text" value="Title">
-				</form>
-			</article>
-			<article class="task">		
-				<button class="checkbox icon big"></button>
-				<label class="label_selector_wrapper">
-					<span class="label_selector_overlay ellipsis">Important</span>
-					<select class="label_selector">
-						<option>Pick a label</option>
-						<option>test</option>
-					</select>
-				</label>		
-				<div class="label icon red"></div>
-				<button class="edit icon"></button>
-				<button class="delete icon"></button>
-				<button class="cancel icon"></button>
-				<h2 class="task_text ellipsis">Title</h2>
-				<form class="editor">
-					<input class="editor_field" type="text" value="Title">
-				</form>
-			</article>
-			<article class="task edit">		
-				<button class="checkbox icon big"></button>
-				<label class="label_selector_wrapper">
-					<span class="label_selector_overlay ellipsis">Important</span>
-					<select class="label_selector">
-						<option>Pick a label</option>
-						<option>test</option>
-					</select>
-				</label>		
-				<div class="label icon red"></div>
-				<button class="edit icon"></button>
-				<button class="delete icon"></button>
-				<button class="cancel icon"></button>
-				<h2 class="task_text ellipsis">Title text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text</h2>
-				<form class="editor">
-					<input class="editor_field" type="text" value="Title">
-				</form>
-			</article>
-			<article class="task no_label done">		
-				<button class="checkbox icon big"></button>
-				<label class="label_selector_wrapper">
-					<span class="label_selector_overlay ellipsis"></span>
-					<select class="label_selector">
-						<option>Pick a label</option>
-						<option>test</option>
-					</select>
-				</label>		
-				<div class="label icon gray"></div>
-				<button class="edit icon"></button>
-				<button class="delete icon"></button>
-				<button class="cancel icon"></button>
-				<h2 class="task_text ellipsis">Title</h2>
-				<form class="editor">
-					<input class="editor_field" type="text" value="Title">
-				</form>
-			</article>
-			<article class="task no_label edit">		
-				<button class="checkbox icon big"></button>
-				<label class="label_selector_wrapper">
-					<span class="label_selector_overlay ellipsis"></span>
-					<select class="label_selector">
-						<option>Pick a label</option>
-						<option>test</option>
-					</select>
-				</label>		
-				<div class="label icon gray"></div>
-				<button class="edit icon"></button>
-				<button class="delete icon"></button>
-				<button class="cancel icon"></button>
-				<h2 class="task_text ellipsis">Title</h2>
-				<form class="editor">
-					<input class="editor_field" type="text" value="Title">
-				</form>
-			</article>
-			<article class="task no_label">		
-				<button class="checkbox icon big"></button>
-				<label class="label_selector_wrapper">
-					<span class="label_selector_overlay ellipsis"></span>
-					<select class="label_selector">
-						<option>Pick a label</option>
-						<option>test</option>
-					</select>
-				</label>		
-				<div class="label icon gray"></div>
-				<button class="edit icon"></button>
-				<button class="delete icon"></button>
-				<button class="cancel icon"></button>
-				<h2 class="task_text ellipsis">Title</h2>
-				<form class="editor">
-					<input class="editor_field" type="text" value="Title">
-				</form>
-			</article>
-			<article class="task no_label">		
-				<button class="checkbox icon big"></button>
-				<label class="label_selector_wrapper">
-					<span class="label_selector_overlay ellipsis"></span>
-					<select class="label_selector">
-						<option>Pick a label</option>
-						<option>test</option>
-					</select>
-				</label>		
-				<div class="label icon gray"></div>
-				<button class="edit icon"></button>
-				<button class="delete icon"></button>
-				<button class="cancel icon"></button>
-				<h2 class="task_text ellipsis">Title</h2>
-				<form class="editor">
-					<input class="editor_field" type="text" value="Title">
-				</form>
-			</article>
-			<article class="task done">		
-				<button class="checkbox icon big"></button>
-				<label class="label_selector_wrapper">
-					<span class="label_selector_overlay ellipsis">Difficult</span>
-					<select class="label_selector">
-						<option>Pick a label</option>
-						<option>test</option>
-					</select>
-				</label>		
-				<div class="label icon"></div>
-				<button class="edit icon"></button>
-				<button class="delete icon"></button>
-				<button class="cancel icon"></button>
-				<h2 class="task_text ellipsis">Title</h2>
-				<form class="editor">
-					<input class="editor_field" type="text" value="Title">
-				</form>
-			</article>
-			<article class="task">		
-				<button class="checkbox icon big"></button>
-				<label class="label_selector_wrapper">
-					<span class="label_selector_overlay ellipsis">Difficult</span>
-					<select class="label_selector">
-						<option>Pick a label</option>
-						<option>test</option>
-					</select>
-				</label>		
-				<div class="label icon"></div>
-				<button class="edit icon"></button>
-				<button class="delete icon"></button>
-				<button class="cancel icon"></button>
-				<h2 class="task_text ellipsis">Title</h2>
-				<form class="editor">
-					<input class="editor_field" type="text" value="Title">
-				</form>
-			</article>
-			<article class="task">		
-				<button class="checkbox icon big"></button>
-				<label class="label_selector_wrapper">
-					<span class="label_selector_overlay ellipsis">Green</span>
-					<select class="label_selector">
-						<option>Pick a label</option>
-						<option>test</option>
-					</select>
-				</label>		
-				<div class="label icon green"></div>
-				<button class="edit icon"></button>
-				<button class="delete icon"></button>
-				<button class="cancel icon"></button>
-				<h2 class="task_text ellipsis">Title</h2>
-				<form class="editor">
-					<input class="editor_field" type="text" value="Title">
-				</form>
-			</article>
-			<article class="task">		
-				<button class="checkbox icon big"></button>
-				<label class="label_selector_wrapper">
-					<span class="label_selector_overlay ellipsis">Important</span>
-					<select class="label_selector">
-						<option>Pick a label</option>
-						<option>test</option>
-					</select>
-				</label>		
-				<div class="label icon red"></div>
-				<button class="edit icon"></button>
-				<button class="delete icon"></button>
-				<button class="cancel icon"></button>
-				<h2 class="task_text ellipsis">Title text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text</h2>
-				<form class="editor">
-					<input class="editor_field" type="text" value="Title">
-				</form>
-			</article>
-			<article class="task no_label">		
-				<button class="checkbox icon big"></button>
-				<label class="label_selector_wrapper">
-					<span class="label_selector_overlay ellipsis"></span>
-					<select class="label_selector">
-						<option>Pick a label</option>
-						<option>test</option>
-					</select>
-				</label>		
-				<div class="label icon gray"></div>
-				<button class="edit icon"></button>
-				<button class="delete icon"></button>
-				<button class="cancel icon"></button>
-				<h2 class="task_text ellipsis">Title text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text</h2>
-				<form class="editor">
-					<input class="editor_field" type="text" value="Title">
-				</form>
-			</article>
-			<article class="task no_label">		
-				<button class="checkbox icon big"></button>
-				<label class="label_selector_wrapper">
-					<span class="label_selector_overlay ellipsis"></span>
-					<select class="label_selector">
-						<option>Pick a label</option>
-						<option>test</option>
-					</select>
-				</label>		
-				<div class="label icon gray"></div>
-				<button class="edit icon"></button>
-				<button class="delete icon"></button>
-				<button class="cancel icon"></button>
-				<h2 class="task_text ellipsis">Title</h2>
-				<form class="editor">
-					<input class="editor_field" type="text" value="Title">
-				</form>
-			</article>
-			<article class="task no_label">		
-				<button class="checkbox icon big"></button>
-				<label class="label_selector_wrapper">
-					<span class="label_selector_overlay ellipsis"></span>
-					<select class="label_selector">
-						<option>Pick a label</option>
-						<option>test</option>
-					</select>
-				</label>		
-				<div class="label icon gray"></div>
-				<button class="edit icon"></button>
-				<button class="delete icon"></button>
-				<button class="cancel icon"></button>
-				<h2 class="task_text ellipsis">Title</h2>
-				<form class="editor">
-					<input class="editor_field" type="text" value="Title">
-				</form>
-			</article>
-			<article class="task no_label">		
-				<button class="checkbox icon big"></button>
-				<label class="label_selector_wrapper">
-					<span class="label_selector_overlay ellipsis"></span>
-					<select class="label_selector">
-						<option>Pick a label</option>
-						<option>test</option>
-					</select>
-				</label>		
-				<div class="label icon gray"></div>
-				<button class="edit icon"></button>
-				<button class="delete icon"></button>
-				<button class="cancel icon"></button>
-				<h2 class="task_text ellipsis">Title</h2>
-				<form class="editor">
-					<input class="editor_field" type="text" value="Title">
-				</form>
-			</article>
-			<article class="task no_label">		
-				<button class="checkbox icon big"></button>
-				<label class="label_selector_wrapper">
-					<span class="label_selector_overlay ellipsis"></span>
-					<select class="label_selector">
-						<option>Pick a label</option>
-						<option>test</option>
-					</select>
-				</label>		
-				<div class="label icon gray"></div>
-				<button class="edit icon"></button>
-				<button class="delete icon"></button>
-				<button class="cancel icon"></button>
-				<h2 class="task_text ellipsis">Title</h2>
-				<form class="editor">
-					<input class="editor_field" type="text" value="Title">
-				</form>
-			</article>
-			<article class="task done">		
-				<button class="checkbox icon big"></button>
-				<label class="label_selector_wrapper">
-					<span class="label_selector_overlay ellipsis">Difficult</span>
-					<select class="label_selector">
-						<option>Pick a label</option>
-						<option>test</option>
-					</select>
-				</label>		
-				<div class="label icon"></div>
-				<button class="edit icon"></button>
-				<button class="delete icon"></button>
-				<button class="cancel icon"></button>
-				<h2 class="task_text ellipsis">Title</h2>
-				<form class="editor">
-					<input class="editor_field" type="text" value="Title">
-				</form>
-			</article>
-			<article class="task">		
-				<button class="checkbox icon big"></button>
-				<label class="label_selector_wrapper">
-					<span class="label_selector_overlay ellipsis">Difficult</span>
-					<select class="label_selector">
-						<option>Pick a label</option>
-						<option>test</option>
-					</select>
-				</label>		
-				<div class="label icon"></div>
-				<button class="edit icon"></button>
-				<button class="delete icon"></button>
-				<button class="cancel icon"></button>
-				<h2 class="task_text ellipsis">Title</h2>
-				<form class="editor">
-					<input class="editor_field" type="text" value="Title">
-				</form>
-			</article>
-			<article class="task">		
-				<button class="checkbox icon big"></button>
-				<label class="label_selector_wrapper">
-					<span class="label_selector_overlay ellipsis">Green</span>
-					<select class="label_selector">
-						<option>Pick a label</option>
-						<option>test</option>
-					</select>
-				</label>		
-				<div class="label icon green"></div>
-				<button class="edit icon"></button>
-				<button class="delete icon"></button>
-				<button class="cancel icon"></button>
-				<h2 class="task_text ellipsis">Title</h2>
-				<form class="editor">
-					<input class="editor_field" type="text" value="Title">
-				</form>
-			</article>
+
+		</article>
 	</main>
+
 	<aside class="drawer" id="drawer">
+
 		<section class="drawer_section search">
 			<form class="drawer_form">
-				<input type="text" class="search_field" placeholder="Search your tasks">
-				<button class="search_clear input icon"></button>
+				<input 
+				type="text"
+				class="search_field"
+				placeholder="Search your tasks"
+				ng-model="filter.searchFor">
+				<button 
+				type="button"
+				class="search_clear input icon"
+				ng-class="{
+					active: filter.searchFor
+				}"
+				ng-click="filter.searchFor = ''"></button>
 			</form>
 		</section>
+
 		<section class="drawer_section filter">
 			<header class="drawer_header">Show</header>
-			<button class="drawer_line ellipsis icon radio checked">All</button>
-			<button class="drawer_line ellipsis icon radio">Active</button>
-			<button class="drawer_line ellipsis icon radio">Complete</button>
+			<button 
+			ng-cloak
+			ng-repeat="setting in displaySettings"
+			class="drawer_line ellipsis icon radio"
+			ng-class="{checked: filter.display == setting}"
+			ng-click="filter.display = setting">
+				{{setting}}
+			</button>
 		</section>
-		<section class="drawer_section labels">
+
+		<section class="drawer_section labels" ng-class="{ can_add: labelColors.length }">
 			<header class="drawer_header">Labels</header>
 
-			<div class="drawer_line_wrapper">
-				<button class="drawer_line ellipsis icon eye checked">No label</button>
+			<div ng-cloak class="drawer_line_wrapper">
+				<button 
+				class="drawer_line ellipsis icon eye"
+				ng-click="filter.showLabelless = !filter.showLabelless"
+				ng-class="{checked: filter.showLabelless}">
+					No label
+				</button>
 			</div>
 
-			<div class="drawer_line_wrapper">
-				<button class="label_delete icon"></button>
-				<button class="drawer_line ellipsis icon eye red checked">Important</button>
+			<div
+			class="drawer_line_wrapper"
+			ng-cloak
+			ng-repeat="label in labels track by $index">
+				<button class="label_delete icon" ng-click="deleteLabel(label)"></button>
+				<button
+				class="drawer_line ellipsis icon eye"
+				ng-class="label.color + ' ' + (label.show ? 'checked' : '')"
+				ng-click="label.show = !label.show">
+					{{label.key}}
+				</button>
 			</div>
 
-			<div class="drawer_line_wrapper">
-				<button class="label_delete icon"></button>
-				<button class="drawer_line ellipsis icon eye blue checked">Difficult</button>
-			</div>
-
-			<div class="drawer_line_wrapper">
-				<button class="label_delete icon"></button>
-				<button class="drawer_line ellipsis icon eye green">Why</button>
-			</div>
-			<form class="drawer_form">
-				<input type="text" class="label_add" placeholder="Add a label">
-				<button class="label_clear input icon"></button>
+			<form 
+			class="drawer_form"
+			ng-show="labelColors.length"
+			ng-submit="addLabel()">
+				<input
+				type="text"
+				class="label_add"
+				placeholder="Add a label"
+				ng-model="newLabel"
+				ng-blur="newLabel = ''">
+				<button
+				type="button"
+				class="label_clear input icon"
+				ng-class="{
+					active: newLabel
+				}"
+				ng-click="newLabel = ''"></button>
 			</form>
 		</section>
+
 		<section class="drawer_section control">
-			<button class="drawer_button">Remove complete</button>
-			<button class="drawer_button">Show all tasks</button>
-			<header class="drawer_header">
-				Showing 18 out of 20 tasks 
+			<button 
+			class="drawer_button"
+			ng-show="stats.complete"
+			ng-click="deleteCompleteShownTasks()">
+				Remove complete
+			</button>
+
+			<button
+			class="drawer_button"
+			ng-show="stats.hidden"
+			ng-click="resetFilters()">
+				Show all tasks
+			</button>
+
+			<header ng-cloak class="drawer_header" ng-show="tasks.length">
+				{{stats.info}}
 			</header>
 		</section>
+
 	</aside>
-	<div class="fader" onclick="toggleDrawer()"></div>
+
+	<div class="fader" ng-click="drawerOpened = !drawerOpened"></div>
+
+	<script src="./lib/angular.js"></script>
+	<script src="./js/storage.js"></script>
+	<script src="./js/controller.js"></script>
+	<script src="./js/directive.js"></script>
+	<script src="./js/filter.js"></script>
 </body>
 </html>

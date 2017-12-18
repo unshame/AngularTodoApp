@@ -48,21 +48,33 @@
 }
 
 .icon.blue:before{
-    color:#2196F3;
+    color: #2196F3;
 }
 
 .icon.red:before{
-    color:#F44336;
+    color: #F44336;
 }
 
 .icon.orange:before{
-    color:#FF9800;
+    color: #FF9800;
 }
 
 .icon.green:before{
-    color:#4CAF50;
+    color: #4CAF50;
 }
 
 .icon.purple:before{
-    color:#673AB7;
+    color: #673AB7;
+}
+
+.icon.pink:before{
+  color: #E91E63;
+}
+
+.icon.yellow:before{
+  color: #FFEB3B;
+}
+
+.icon.aquamarine:before{
+  color: #00897B;
 }
