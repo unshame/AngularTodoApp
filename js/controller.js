@@ -243,7 +243,10 @@ app.controller('taskController', function($scope, $filter) {
 	function checkSelectedItem(e){
 	    var element = angular.element(e.target);
 	    if(!element) return;
+	    
 	    var scope = element.scope();
+	    if(!scope) return;
+
 	    var item = scope.task || scope.label;
 
 	    if($scope.selectedItem != item) {
