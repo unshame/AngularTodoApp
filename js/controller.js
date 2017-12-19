@@ -200,21 +200,23 @@ app.controller('taskController', function($scope, $filter, $timeout) {
 
 	// Удаляет отображаемые завершенные 
 	function deleteCompleteShownTasks() {
-		tasksFiltered.forEach(function(task) {
+		for(var i = tasksFiltered.length - 1; i >= 0; i--) {
+			var task = tasksFiltered[i];
 			if(task.data.done){
 				deleteTask(task);
 			}
-		});
+		}
 	}
 	$scope.deleteCompleteShownTasks = deleteCompleteShownTasks;
 
 	// Удаляет с определенным лейблом
 	function deleteTasksWithLabel(label) {
-		tasks.forEach(function(task) {
+		for(var i = tasks.length - 1; i >= 0; i--) {
+			var task = tasks[i];
 			if(task.data.label == label) {
 				deleteTask(task);
 			}
-		});
+		}
 	}
 	$scope.deleteTasksWithLabel = deleteTasksWithLabel;
 
