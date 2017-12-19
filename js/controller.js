@@ -5,7 +5,9 @@ let storageKeyTasks = 'taskStorage';
 let storageKeyLabels = 'labelStorage';
 let storageKeyDrawer = 'drawerStorage';
 
-app.controller('taskController', function($scope, $filter) {
+app.controller('taskController', function($scope, $filter, $timeout) {
+
+	$scope.loaded = false;
 	
 	// Создание объектов тасков и лейблов
 	function createTask(data, label) {
@@ -243,7 +245,7 @@ app.controller('taskController', function($scope, $filter) {
 	function checkSelectedItem(e){
 	    var element = angular.element(e.target);
 	    if(!element) return;
-	    
+
 	    var scope = element.scope();
 	    if(!scope) return;
 
@@ -365,6 +367,12 @@ app.controller('taskController', function($scope, $filter) {
 
 	$scope.$watch('drawerOpened', function() {
 		setStoredItem(storageKeyDrawer, $scope.drawerOpened);
+	});
+
+	$scope.$watch('$viewContentLoaded', function(){
+		$timeout(function(){
+	    	$scope.loaded = true;
+	    });
 	});
 
 });

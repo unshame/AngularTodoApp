@@ -61,8 +61,10 @@ input[type="text"]:placeholder {
 	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26);
 
 	overflow:hidden;
+}
 
-	transition: padding 500ms;
+body.loaded>.toolbar {    
+    transition: padding 500ms;
 }
 
 .toolbar .title {
@@ -100,7 +102,10 @@ button.open_drawer:before {
 /* Content */
 body {
 	position: relative;
-	transition: padding 500ms;
+}
+
+body.loaded {    
+    transition: padding 500ms;
 }
 
 .task {
@@ -418,6 +423,9 @@ input.task_new_field,
     border-right: 1px solid rgba(0, 0, 0, 0.11);
     font-size: 14px;
     
+}
+
+body.loaded>.drawer {    
     transition: left 500ms;
 }
 
@@ -529,7 +537,6 @@ body.open_drawer>.drawer {
     background: #2196F3;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.57);
 
-	transition: 0.3s;
 }
 
 .drawer_button:active{
@@ -667,6 +674,10 @@ input.label_add {
 	.toolbar {
 		padding-left: 256px;
 	}
+
+    body.loaded>.toolbar {
+        transition: none;
+    }
 
 	.toolbar>.title {
 		margin-left: 16px;
