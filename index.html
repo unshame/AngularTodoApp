@@ -120,12 +120,14 @@
 	<aside class="drawer" id="drawer">
 
 		<section class="drawer_section search">
-			<form class="drawer_form">
+			<form class="drawer_form" ng-submit="searchDone = true">
 				<input 
 				type="text"
 				class="search_field"
 				placeholder="Search your tasks"
-				ng-model="filter.searchFor">
+				ng-model="filter.searchFor"
+				lose-focus="{{searchDone}}"
+				ng-blur="searchDone = false">
 				<button 
 				type="button"
 				class="search_clear input icon"

@@ -14,6 +14,22 @@ app.directive('getFocus', function($timeout) {
 	};
 });
 
+// Инпут теряет фокус, когда значение стало true
+app.directive('loseFocus', function($timeout) {
+    return {
+        scope: { trigger: '@loseFocus' },
+        link: function(scope, element) {
+            scope.$watch('trigger', function(value) {
+                if(value === "true") { 
+                    $timeout(function() {
+                        element[0].blur(); 
+                    });
+                }
+            });
+        }
+    };
+});
+
 // Добавляет цвета лейблам при выборе
 app.directive('labelColors', function () {
   return {

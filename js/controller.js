@@ -279,6 +279,8 @@ app.controller('taskController', function($scope, $filter) {
 	// Открыто ли меню фильтров
 	$scope.drawerOpened = getStoredItem(storageKeyDrawer) || false;
 
+	$scope.searchDone = false;
+
 	// Фильтрует таски и обновляет статистику
 	function filterTasks() {
 		tasksFiltered = $scope.tasksFiltered = $filter('taskFilter')($scope);
