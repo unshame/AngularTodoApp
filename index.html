@@ -12,7 +12,7 @@
 	<link rel="stylesheet" type="text/css" href="./css/icons.css">
 	<style>[ng-cloak] { display: none !important; } </style>
 </head>
-<body ng-app="taskApp" ng-controller="taskController" ng-class="{open_drawer: drawerOpened}" click-dir="checkSelectedItem">
+<body ng-app="taskApp" ng-controller="taskController" ng-class="{open_drawer: drawerOpened}" ng-click="checkSelectedItem($event)">
 
 	<header class="toolbar">
 		<button class="open_drawer icon big white" ng-click="drawerOpened = !drawerOpened"></button>
