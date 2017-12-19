@@ -163,6 +163,7 @@ app.controller('taskController', function($scope, $filter) {
 	var tasks = $scope.tasks = [];
 	var tasksData = $scope.tasksData = getStoredArrayItem(storageKeyTasks, defaultTasks);
 	var tasksFiltered = $scope.tasksFiltered = [];
+	$scope.selectedItem = null;
 
 	// Добавляем загруженные таски в основной массив
 	tasksData.forEach(function(data){
@@ -239,6 +240,17 @@ app.controller('taskController', function($scope, $filter) {
 	}
 	$scope.changeTask = changeTask;
 
+	function selectItem(item) {
+		$scope.selectedItem = item;
+	}
+	$scope.selectItem = selectItem;
+
+	function unselectItem(item) {
+		if(item == $scope.selectedItem){
+			$scope.selectedItem = null;
+		}
+	}
+	$scope.unselectItem = unselectItem;
 
 	/* Фильтры */
 

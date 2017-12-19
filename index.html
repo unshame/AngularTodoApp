@@ -66,10 +66,13 @@
 		<article 
 		class="task" 
 		ng-repeat="task in tasksFiltered"
+		ng-click="selectItem(task)"
+		click-outside="unselectItem(task)"
 		ng-class="{
 			done: task.data.done,
 			no_label: !task.data.label,
-			edit: task.editing
+			edit: task.editing,
+			selected: selectedItem == task
 		}">		
 			<button
 			class="checkbox icon big"
@@ -160,7 +163,10 @@
 			<div
 			class="drawer_line_wrapper"
 			ng-cloak
-			ng-repeat="label in labels track by $index">
+			ng-repeat="label in labels track by $index"			
+			ng-click="selectItem(label)"
+			click-outside="unselectItem(label)"
+			ng-class="{selected: selectedItem == label}">
 				<button class="label_delete icon" ng-click="deleteLabel(label)"></button>
 				<button
 				class="drawer_line ellipsis icon eye"

@@ -722,3 +722,60 @@ input.label_add {
 	}
 
 }
+
+@media (hover: none) {
+
+    .task:not(.selected).no_label .label_selector {
+        display: none;
+    }
+
+    .task:not(.selected):hover .label_selector_overlay {
+        display: block;
+    }
+
+    .task:not(.selected):hover button.edit,
+    .task:not(.selected):hover button.delete,
+    .task:not(.selected).no_label:hover .label {
+        display: none;
+    }
+
+    .task:not(.new):not(.no_label):not(.selected):before {
+        content:'';
+        position: absolute;
+        display: block;
+
+        z-index: 3;
+        top: 0;
+        bottom: 0;
+        right: 40px;
+
+        width: 80px;
+    }
+
+    .task.selected .label_selector_overlay {
+        display: none;
+    }
+
+    .task.selected:not(.edit) button.edit,
+    .task.selected:not(.edit) button.delete,
+    .task.selected:not(.edit) .label {
+        display: block;
+        opacity: 1;
+    }
+
+    .drawer_line_wrapper:not(.selected):hover .drawer_line {
+        padding-right: 16px;
+    }
+
+    .drawer_line_wrapper:not(.selected):hover .label_delete {
+        display: none;
+    }
+
+    .drawer_line_wrapper.selected .drawer_line {
+        padding-right: 40px;
+    }
+
+    .drawer_line_wrapper.selected .label_delete {
+        display: block;
+    }
+}
