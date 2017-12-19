@@ -666,6 +666,64 @@ input.label_add {
 	}
 }
 
+@media (min-width: 631px) and (max-width: 680px) {
+
+    body.open_drawer .task.new {
+        height: 128px;
+    }
+
+    body.open_drawer .task.new button.checkbox{
+        position: absolute;
+
+        top: 0;
+        left: 0;
+        margin-top: 78px;
+    }
+
+    body.open_drawer .task.new .task_new_wrapper {
+        margin-left: 16px;
+        margin-right: 0;
+    }
+
+    body.open_drawer .task.new .label_selector_wrapper {
+        float: none;
+
+        margin-left: 56px;
+        margin-top: 0;
+
+        width: auto;
+    }
+}
+
+@media (max-width: 420px) {
+
+    .task.new {
+        height: 128px;
+    }
+
+    .task.new button.checkbox{
+        position: absolute;
+
+        top: 0;
+        left: 0;
+        margin-top: 78px;
+    }
+
+    .task.new .task_new_wrapper {
+        margin-left: 16px;
+        margin-right: 0;
+    }
+
+    .task.new .label_selector_wrapper {
+        float: none;
+
+        margin-left: 56px;
+        margin-top: 0;
+
+        width: auto;
+    }
+}
+
 @media (min-width: 800px) {
 	.drawer {
 		left: 0;
