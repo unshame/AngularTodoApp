@@ -739,6 +739,10 @@ input.label_add {
         display: none;
     }
 
+    .task:hover .task_text {
+        margin-right: 128px;
+    }
+
     .task:not(.new):not(.no_label):not(.selected):before {
         content:'';
         position: absolute;
