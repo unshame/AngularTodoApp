@@ -246,8 +246,6 @@ app.controller('taskController', function($scope, $filter) {
 	    var scope = element.scope();
 	    var item = scope.task || scope.label;
 
-	    console.log($scope.selectedItem, item)
-
 	    if($scope.selectedItem != item) {
 	    	$scope.selectedItem = item || null;
 	    }
