@@ -36,6 +36,7 @@ app.directive('labelColors', function () {
   };
 });
 
+// Нажатие вне элемента
 app.directive('clickOutside', function($document, $parse, $timeout) {
     return {
         restrict: 'A',
