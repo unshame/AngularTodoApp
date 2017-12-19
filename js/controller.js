@@ -240,17 +240,19 @@ app.controller('taskController', function($scope, $filter) {
 	}
 	$scope.changeTask = changeTask;
 
-	function selectItem(item) {
-		$scope.selectedItem = item;
-	}
-	$scope.selectItem = selectItem;
+	function checkSelectedItem(e){
+	    var element = angular.element(e.target);
+	    if(!element) return;
+	    var scope = element.scope();
+	    var item = scope.task || scope.label;
 
-	function unselectItem(item) {
-		if(item == $scope.selectedItem){
-			$scope.selectedItem = null;
-		}
+	    console.log($scope.selectedItem, item)
+
+	    if($scope.selectedItem != item) {
+	    	$scope.selectedItem = item || null;
+	    }
 	}
-	$scope.unselectItem = unselectItem;
+	$scope.checkSelectedItem = checkSelectedItem;
 
 	/* Фильтры */
 

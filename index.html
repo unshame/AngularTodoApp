@@ -12,7 +12,7 @@
 	<link rel="stylesheet" type="text/css" href="./css/icons.css">
 	<style>[ng-cloak] { display: none !important; } </style>
 </head>
-<body ng-app="taskApp" ng-controller="taskController" ng-class="{open_drawer: drawerOpened}">
+<body ng-app="taskApp" ng-controller="taskController" ng-class="{open_drawer: drawerOpened}" click-dir="checkSelectedItem">
 
 	<header class="toolbar">
 		<button class="open_drawer icon big white" ng-click="drawerOpened = !drawerOpened"></button>
@@ -66,8 +66,6 @@
 		<article 
 		class="task" 
 		ng-repeat="task in tasksFiltered"
-		ng-click="selectItem(task)"
-		click-outside="unselectItem(task)"
 		ng-class="{
 			done: task.data.done,
 			no_label: !task.data.label,
@@ -165,9 +163,7 @@
 			<div
 			class="drawer_line_wrapper"
 			ng-cloak
-			ng-repeat="label in labels track by $index"			
-			ng-click="selectItem(label)"
-			click-outside="unselectItem(label)"
+			ng-repeat="label in labels track by $index"	
 			ng-class="{selected: selectedItem == label}">
 				<button class="label_delete icon" ng-click="deleteLabel(label)"></button>
 				<button
@@ -220,7 +216,7 @@
 
 	</aside>
 
-	<div class="fader" ng-click="drawerOpened = !drawerOpened"></div>
+	<div class="fader" ng-click="drawerOpened = false"></div>
 
 	<script src="./lib/angular.js"></script>
 	<script src="./js/polyfill.js"></script>
