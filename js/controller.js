@@ -354,11 +354,12 @@ app.controller('taskController', function($scope, $filter, $timeout) {
 
 	/* Наблюдение за изменениями */
 
-	$scope.$watch('[tasks, filter]', function() {
+	$scope.$watch('filter', function() {
 		filterTasks();
 	}, true);
 
 	$scope.$watch('tasksData', function() {
+		filterTasks();
 		saveTasks();
 	}, true);
 
