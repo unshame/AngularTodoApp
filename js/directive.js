@@ -51,3 +51,10 @@ app.directive('labelColors', function () {
     }
   };
 });
+
+// Создает child scope для элемента
+app.directive('fakeItem', function () {
+    return {
+        scope: true
+    }
+});

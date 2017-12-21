@@ -155,7 +155,11 @@ ng-click="checkSelectedItem($event)">
 		<section class="drawer_section labels" ng-class="{ can_add: labelColors.length }">
 			<header class="drawer_header">Labels</header>
 
-			<div ng-cloak class="drawer_line_wrapper labelless">
+			<div 
+			ng-cloak
+			class="drawer_line_wrapper labelless"
+			fake-item="{{label='labelless'}}"
+			ng-class="{selected: selectedItem == label}">
 				<button 
 				class="drawer_line ellipsis icon eye"
 				ng-click="filter.showLabelless = !filter.showLabelless"
