@@ -530,11 +530,11 @@ body.open_drawer>.drawer {
 }
 
 .icon.label_solo {
-    right: 48px;
+    right: 8px;
 }
 
-.icon.label_delete, .labelless .icon.label_solo {
-    right: 8px;
+.icon.label_delete {
+    right: 48px;
 }
 
 .icon.label_solo:before {
