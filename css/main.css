@@ -499,28 +499,50 @@ body.open_drawer>.drawer {
 	color: rgba(0, 0, 0, 0.54);
 }
 
+.drawer_line_wrapper {
+    position: relative;
+}
+
 .drawer_line_wrapper:hover .drawer_line {
-	padding-right: 40px;
+	padding-right: 80px;
 }
 
-.drawer_line_wrapper:hover .label_delete {
-	display: block;
-}
+.icon.drawer_side_button {
+    position: absolute;
+    display: none;
 
-.icon.label_delete {
-	position: absolute;
-	display: none;
-
-	z-index: 2;
-    right: 0;
+    z-index: 2;
+    top: 0;
     
     width: 40px;
     height: 48px;
+
+    padding: 12px 8px;
+}
+
+.drawer_line_wrapper:hover .drawer_side_button {
+    display: block;
+}
+
+.icon.drawer_side_button:before {
+    top: 12px;
+    left: 8px;
+}
+
+.icon.label_solo {
+    right: 48px;
+}
+
+.icon.label_delete, .labelless .icon.label_solo {
+    right: 8px;
+}
+
+.icon.label_solo:before {
+    content: 'fiber_manual_record';
 }
 
 .icon.label_delete:before {
 	content: 'delete';
-	top: 12px;
 }
 
 .drawer_button{
@@ -840,7 +862,7 @@ input.label_add {
         padding-right: 16px;
     }
 
-    .drawer_line_wrapper:not(.selected):hover .label_delete {
+    .drawer_line_wrapper:not(.selected):hover .drawer_side_button {
         display: none;
     }
 
@@ -848,7 +870,7 @@ input.label_add {
         padding-right: 40px;
     }
 
-    .drawer_line_wrapper.selected .label_delete {
+    .drawer_line_wrapper.selected .drawer_side_button {
         display: block;
     }
 }

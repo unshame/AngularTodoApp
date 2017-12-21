@@ -153,6 +153,18 @@ app.controller('taskController', function($scope, $filter, $timeout) {
 	}
 	$scope.labelIsShown = labelIsShown;
 
+	function soloLabel(label) {
+		labels.forEach(function(otherLabel) {
+			if(label != otherLabel) {
+				otherLabel.show = false;
+			}
+			else {
+				otherLabel.show = true;
+			}
+		});
+		filter.showLabelless = !label;
+	}
+	$scope.soloLabel = soloLabel;
 
 	/* Таски */
 
